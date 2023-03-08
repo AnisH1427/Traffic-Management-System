@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #a9a7a5;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+        font-family: "RocknRoll One", cursive;
+        font-size: 16px;
+        font-weight: Regular;
+        color: #160750;
+        text-align: center;
+        margin-top: 15px;
+    }
+  
+
+        label {
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-family: "Roboto Mono", monospace;
+            font-size: 16px;
+            font-weight: bold;
+            color: #066115;
+            width: 100px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+            background-color: #F1F1F1;
+        }
+
+        input[name="username"]::placeholder {
+            text-align: left;
+        }
+
+        input[name="email"]::placeholder {
+            text-align: left;
+        }
+
+        input[type="submit"] {
+            background-color: #2B8E4E;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+
+        a {
+            color: #2B8E4E;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Traffic Management System</h1>
+    <form>
+        <label for="username">User name</label>
+        <input type="text" id="username" name="username" placeholder="Enter your name" style="margin-left: 3px;">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" style="margin-left: 3px;">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your Password" style="margin-left: 3px;">
+
+        <input type="submit" value="Login">
+    </form>
+    <div>
+			Don't have an account? <a href="#">Sign Up</a>
+		</div>
+	</div>
+</body>
+</html>
