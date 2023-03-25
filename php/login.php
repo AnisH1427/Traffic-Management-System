@@ -1,8 +1,9 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'tms');
+include "connect.php";
+// $conn = mysqli_connect('127.0.0.1:3307', 'root', '', 'tms');
 extract($_POST);
 
-$sql = "SELECT `user_id` FROM `user account` WHERE `user_name` = '{$Username}' AND `user_password` = '{$Password}' ";
+$sql = "SELECT `Id` FROM `user` WHERE `Name` = '{$Username}' AND `Password` = '{$password}' ";
 $res = mysqli_query($conn, $sql);
 $response = [];
 if(mysqli_num_rows($res) != 0):
@@ -10,10 +11,11 @@ if(mysqli_num_rows($res) != 0):
     $got = mysqli_fetch_assoc($res);
     $response[] = "Success";
     $_SESSION["userID"] = $got['user_id'];
-    header("Location: ../Dashboard.html");
+    header("Location: ../Home.html");
 else:
     // Query Execution Error
     $response[] = "Failed";
-    echo json_encode($response);
+    echo "Login Invalid";
+    // echo json_encode($response);
 endif;
 
