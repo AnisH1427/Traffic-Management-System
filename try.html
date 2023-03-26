@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Interactive Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      canvas {
+        max-width: 300px;
+        max-height: 300px;
+      }
+      #chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+      }
+      #pie-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+      }
+      #hist-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="pie-container" style="float:right; margin-right: 20px;"> -->
+      <div id="pie-container">
+        <canvas id="myPie" width="200" height="200"></canvas>
+      </div>
+      
+    <div id="chart-container">
+      <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+    <div id="hist-container">
+      <canvas id="myHist" width="200" height="200"></canvas>
+    </div>
+    <script>
+      const pieData = {
+        labels: ['Death', 'Injuries', 'Injuries per Death Ratio'],
+        datasets: [
+          {
+            label: 'My Second Dataset',
+            data: [16,84,19],
+            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
+          }
+        ]
+      };
+
+      const pieConfig = {
+        type: 'pie',
+        data: pieData,
+        options: {}
+      };
+
+      var myPie = new Chart(document.getElementById('myPie'), pieConfig);
+
+      const data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+          {
+            label: 'Accident Record',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          }
+        ]
+      };
+
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+
+      var myChart = new Chart(document.getElementById('myChart'), config);
+
+      const histData = {
+        labels: ['0-10', '10-20', '20-30', '30-40', '40-50', '50-60'],
+        datasets: [
+          {
+            label: 'My Third Dataset',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: 'rgb(153, 102, 255)',
+          }
+        ]
+      };
+
+      const histConfig = {
+        type: 'bar',
+        data: histData,
+        options: {}
+      };
+
+      var myHist = new Chart(document.getElementById('myHist'), histConfig);
+    </script>
+  </body>
+</html>
