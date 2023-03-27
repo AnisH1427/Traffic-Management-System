@@ -6,7 +6,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 nav{
-    background-color: #287bff;
+    background: linear-gradient(#2d0868,#7597de);
     padding: 10px 40px 10px 70px;
     border: 1px solid #000;
     border-left: none;
@@ -23,6 +23,12 @@ nav ul li.logo{
     flex: 1;
     font-size: 40px;
     font-weight: 700;
+}
+nav ul li a{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
 }
 nav ul div.items{
     padding: 0 25px;
@@ -42,7 +48,8 @@ nav ul .search-icon{
     border-radius: 5px ;
 }
 nav ul div.items a:hover{
-    color: black;
+    background: #fff;
+    color: #2b1055;
 }
 label.logo{
     color: whitesmoke;
