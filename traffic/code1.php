@@ -4,10 +4,10 @@ require 'connect.php';
 
 if(isset($_POST['save_police']))
 {
-    $Name = mysqli_real_escape_string($conn, $_POST['Name']);
-    $MobileNumber = mysqli_real_escape_string($conn, $_POST['MobileNumber']);
-    $Email = mysqli_real_escape_string($con, $_POST['Email']);
-    $Location_Name = mysqli_real_escape_string($conn, $_POST['Location_Name']);
+    $Name = mysqli_real_escape_string($conn, $_POST['name']);
+    $MobileNumber = mysqli_real_escape_string($conn, $_POST['phone']);
+    $Email = mysqli_real_escape_string($conn, $_POST['email']);
+    $Location_Name = mysqli_real_escape_string($conn, $_POST['location']);
 
     if($Name == NULL || $MobileNumber == NULL || $Email == NULL || $Location_Name == NULL)
     {
@@ -47,12 +47,12 @@ if(isset($_POST['update_police']))
 {
     $police_id = mysqli_real_escape_string($conn, $_POST['police_id']);
 
-    $Name = mysqli_real_escape_string($conn, $_POST['Name']);
-    $MobileNumber = mysqli_real_escape_string($conn, $_POST['MobileNumber']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $Location_Name = mysqli_real_escape_string($conn, $_POST['Location_Name']);
+    $Name = mysqli_real_escape_string($conn, $_POST['name']);
+    $MobileNumber = mysqli_real_escape_string($conn, $_POST['phone']);
+    $Email = mysqli_real_escape_string($conn, $_POST['email']);
+    $Location_Name = mysqli_real_escape_string($conn, $_POST['location']);
 
-    if($Name == NULL || $MobileNumber == NULL || $email == NULL || $Location_Name == NULL)
+    if($Name == NULL || $MobileNumber == NULL || $Email == NULL || $Location_Name == NULL)
     {
         $res = [
             'status' => 422,
@@ -62,7 +62,7 @@ if(isset($_POST['update_police']))
         return;
     }
 
-    $query = "UPDATE police SET name='$Name', email='$MobileNumber', phone='$Email', course='$Location_Name' 
+    $query = "UPDATE police SET Name='$Name', MobileNumber='$MobileNumber', Email='$Email', Location_Name='$Location_Name' 
                 WHERE id='$police_id'";
     $query_run = mysqli_query($conn, $query);
 
