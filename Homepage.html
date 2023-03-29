@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
     <link rel="stylesheet" href="Homepage.css">
-    <title>TMS | Homepage</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<<<<<<< HEAD
 <body>
     <header>
         <a href="#" class="logo">Hamro Traffic</a>
@@ -18,5 +20,79 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </header>
+=======
+
+<body>
+    <div class="home">
+        <nav>
+            <img src="images/logo.png" class="logo">
+            <img src="images/menu.png" class="menu-img">
+        <ul>
+            <li><a href="">Latest</a></li>
+            <li><a href="Login.html">Login</a></li>
+            <li><a href="Register.html">Register</a></li>
+            <li><a href="">About us</a></li>
+        </ul>
+        <button type="button" onclick="toggleBtn()" id="btn"><span></span></button>
+        </nav>
+
+        <div class="lamp-container">
+            <img src="images/lamp.png" class="lamp">
+            <img src="images/flash.png" class="flash" id="flash">
+        </div>
+
+        <div class="text-container">
+            <h1>Latest <br>in Hamro Traffic</h1>
+            <p>TMS include, ramp signaling, dynamic lane management, <br>
+                variable speed limits, incident detection, vehicle activated signs<br>
+                 and adaptive traffic signal control.
+                <br> Many of the systems are usually integrated to gain maximum benefit.
+            </p>
+            <a href="#">Check All Blogs</a>
+        </div>
+
+        <!-- <div id="myChart">
+        </div> -->
+        <div id="pie-container">
+            <canvas id="myPie" width="200" height="200"></canvas>
+        </div>
+
+        <div class="footer">
+            <h5>@copyright/HamroTrafficNepal</h5>
+        </div>
+
+    </div>
+
+<script>
+    const pieData = {
+        labels: ['Death', 'Injuries', 'Injuries per Death Ratio'],
+        datasets: [
+          {
+            label: 'My Second Dataset',
+            data: [16,84,19],
+            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
+          }
+        ]
+      };
+
+      const pieConfig = {
+        type: 'pie',
+        data: pieData,
+        options: {}
+      };
+
+      var myPie = new Chart(document.getElementById('myPie'), pieConfig);
+</script>
+
+<script>
+    var btn= document.getElementById("btn");
+    var flash= document.getElementById("flash");
+
+    function toggleBtn(){
+        btn.classList.toggle("active");
+        flash.classList.toggle("on");
+    }
+</script>
+>>>>>>> 44cf34585807de030820121de43cf07e455e0c55
 </body>
 </html>
