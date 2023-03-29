@@ -361,3 +361,6 @@ body {
     color: #ff5d94;
 
 }
+.container .main .trial {
+    background: red;
+}
