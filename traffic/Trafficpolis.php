@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+
     <link rel="stylesheet" href="Trafficpolis.css">
     <title>Traffic</title>
 </head>
@@ -12,9 +15,9 @@
 <body>
     <div class="container">
         <div class="navigation">
-            <!-- <div class="logo">
-            <img src="images/HamroTrafficLogo.png" alt="">
-        </div> -->
+            <div class="logo">
+            <img src="../images/HamroTrafficLogo.png" alt="" width="20" height="20">
+        </div>
             <ul>
                 <li>
                     <a href="#">
@@ -74,7 +77,7 @@
                     </label>
                 </div>
                 <div class="profile" onclick="MenuToggle();">
-                    <img src="images/profile.png" alt="">
+                    <img src="../images/profile.png" alt="">
                 </div>
                 <div class="menu">
                     <ul>
@@ -95,8 +98,7 @@
                 </script>
             </div>
         <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+        <!-- Button trigger modal -->
 
         <!-- Add Student -->
         <div class="modal fade" id="policeAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,15 +119,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">MobileNumber</label>
-                                <input type="text" name="email" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Email</label>
                                 <input type="text" name="phone" class="form-control" />
                             </div>
                             <div class="mb-3">
+                                <label for="">Email</label>
+                                <input type="text" name="email" class="form-control" />
+                            </div>
+                            <div class="mb-3">
                                 <label for="">Location_Name</label>
-                                <input type="text" name="course" class="form-control" />
+                                <input type="text" name="location" class="form-control" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -158,15 +160,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">MobileNumber</label>
-                                <input type="text" name="email" id="Mobilenumber" class="form-control" />
+                                <input type="text" name="phone" id="Mobilenumber" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Email</label>
-                                <input type="text" name="phone" id="Email" class="form-control" />
+                                <input type="text" name="email" id="Email" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="">Location_Name</label>
-                                <input type="text" name="course" id="LocationName" class="form-control" />
+                                <input type="text" name="location" id="LocationName" class="form-control" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -219,7 +221,7 @@
                         <div class="card-header">
                             <h4>Manage Police
 
-                                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#PoliceAddModal">
+                                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#policeAddModal">
                                     Add Police
                                 </button>
                             </h4>
@@ -276,7 +278,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     </body>
     </html>
             <!-- cards -->
@@ -356,20 +358,19 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-
                         var res = jQuery.parseJSON(response);
                         if (res.status == 422) {
                             $('#errorMessage').removeClass('d-none');
                             $('#errorMessage').text(res.message);
-
                         } else if (res.status == 200) {
-
                             $('#errorMessage').addClass('d-none');
+                            alertify.set('notifier', 'poition', 'top-right');
+                            alertify.success(res.message);
                             $('#policeAddModal').modal('hide');
+                            $('body').removeClass('modal-open');
+$('.modal-backdrop').remove(); 
                             $('#savePolice')[0].reset();
 
-                            alertify.set('notifier', 'position', 'top-right');
-                            alertify.success(res.message);
 
                             $('#myTable').load(location.href + " #myTable");
 
@@ -389,13 +390,11 @@
                     type: "GET",
                     url: "code1.php?police_id=" + police_id,
                     success: function(response) {
-
                         var res = jQuery.parseJSON(response);
                         if (res.status == 404) {
 
                             alert(res.message);
                         } else if (res.status == 200) {
-
                             $('#police_id').val(res.data.Id);
                             $('#Name').val(res.data.Name);
                             $('#Mobilenumber').val(res.data.MobileNumber);
@@ -423,7 +422,6 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-
                         var res = jQuery.parseJSON(response);
                         if (res.status == 422) {
                             $('#errorMessageUpdate').removeClass('d-none');
