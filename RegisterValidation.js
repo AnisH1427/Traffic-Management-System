@@ -3,13 +3,12 @@ class Form {
       console.log("Constructor Called")
       this.form = document.querySelector(formSelector);
       this.name = document.querySelector('#name');
-      this.address = document.querySelector('#address');
-      this.mobile = document.querySelector('#mobile');
       this.email = document.querySelector('#email');
-      this.gender = document.querySelector('input[name="gender"]:checked');
+      this.mobileNumber = document.querySelector('#mobileNumber');
+      this.address = document.querySelector('#address');
       this.password = document.querySelector('#password');
       this.confirmPassword = document.querySelector('#confirm-password');
-      
+      this.gender = document.querySelector('input[name="gender"]:checked');
       this.form.addEventListener('submit', this.onSubmit.bind(this));
     }
     
