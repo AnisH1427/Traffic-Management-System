@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 
-    <link rel="stylesheet" href="Trafficpolis.css">
+    <link rel="stylesheet" href="offender.css">
     <title>Traffic</title>
 </head>
 
@@ -26,19 +26,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../Admin/AdminDashboard.html">
+                    <a href="../Admin/AdminDashboard.html" class="active">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../traffic/Trafficpolis.php">
                         <span class="icon"><ion-icon name="man-outline"></ion-icon></span>
                         <span class="title">Traffic Police</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../offender/offender.php">
+                    <a href="#">
                         <span class="icon"><ion-icon name="storefront-outline"></ion-icon></span>
                         <span class="title">Offender</span>
                     </a>
@@ -97,7 +97,7 @@
         <!-- Bootstrap CSS -->
         <!-- Button trigger modal -->
 
-        <!-- Add Student -->
+        <!-- Add Student
         <div class="modal fade" id="policeAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -134,10 +134,10 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Edit Police Modal -->
-        <div class="modal fade" id="policeEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="policeEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -175,10 +175,10 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- View Police Modal -->
-        <div class="modal fade" id="policeViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="policeViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -209,18 +209,18 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Manage Police
+                            <h4>Manage Offender
 
-                                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#policeAddModal">
+                                <!-- <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#policeAddModal">
                                     Add Police
-                                </button>
+                                </button> -->
                             </h4>
                         </div>
                         <div class="card-body">
@@ -228,11 +228,11 @@
                             <table id="myTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>MobileNumber</th>
-                                        <th>Email</th>
-                                        <th>Location_Name</th>
+                                        <th>Offender ID</th>
+                                        <th>Police ID</th>
+                                        <th> Offence Name</th>
+                                        <th>Offender Type</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
