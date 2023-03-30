@@ -114,6 +114,12 @@ canvas {
 }
 
 .footer h5{
+<<<<<<< HEAD
     padding: 50px;
     color: #272525;
 }
+=======
+    padding: 20px;
+    color: #fff;
+}
+>>>>>>> 88f0df32476a1f892a35a0d2dbf8de1f8845388f
