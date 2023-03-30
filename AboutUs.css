@@ -5,10 +5,10 @@
     font-family: 'poppins', sans-serif;
 }
 
-.home{
-    background:#fff;
+.aboutUs{
+    background:#f7f7f7;
     position: relative;
-    color: #272525;;
+    color: #272525;
     width: 100%;
     min-height: 100vh;
 }
@@ -23,6 +23,7 @@ nav{
 nav h1{
     color: #fff;
 }
+
 nav .menu-img{
     margin-right: 20px;
     width: 25px;
@@ -71,7 +72,7 @@ a:hover{
 
 .text-container{
     max-width: 600px;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 10%;
 }
 
@@ -84,6 +85,35 @@ a:hover{
     text-decoration: none;
     display: inline-block;
     color:#fff;
+    background: #002b80;
+    font-size: 20px;
+    border-radius: 40%;
+    padding: 14px 40px;
+    margin-top: 20px;
+}
+
+.ourmission{
+    height: 300px;
+    width: 300px;
+    margin-left: 120%;
+    margin-top: -50%;
+}
+
+.next-container{
+    max-width: 600px;
+    margin-top: 5%;
+    margin-left: 50%;
+}
+
+.next-container h1{
+    font-size: 40px;
+    font-weight: 200;
+}
+
+.next-container a{
+    text-decoration: none;
+    display: inline-block;
+    color:#fff;
     background: #003cb3;
     font-size: 20px;
     border-radius: 40%;
@@ -91,17 +121,11 @@ a:hover{
     margin-top: 20px;
 }
 
-canvas {
-    max-width: 300px;
-    max-height: 300px;
-}
-
-#pie-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 50%;
-    margin-top: -25%;
+.ourstory{
+    height: 300px;
+    width: 500px;
+    margin-left: -150%;
+    margin-top: -36%;
 }
 
 .footer{
