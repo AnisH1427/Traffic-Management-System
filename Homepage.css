@@ -4,13 +4,13 @@
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
 }
-
 .home{
-    background:#1d2026;
+    background: linear-gradient(to bottom, rgb(179, 179, 196), #3dcc16);
     position: relative;
-    color: #fff;
+    color: #618f32;
     width: 100%;
     min-height: 100vh;
+    font-size: 20px;
 }
 
 nav{
@@ -44,7 +44,7 @@ nav ul li{
 
 nav ul li a{
     text-decoration: none;
-    color: #fff;
+    color: #de7c05;
 }
 
 button{
@@ -68,29 +68,6 @@ button span{
     transition: background 0.5s, margin-left 0.5s;
 }
 
-lamp-container{
-    position: absolute;
-    top: 0px;
-    left: 22%;
-    width: 200px;
-}
-
-.lamp{
-    position: absolute;
-    left: 380px;
-    top: 5px;
-    height: 300px;
-    width: 160px;
-}
-
-.flash{
-    position: absolute;
-    height: 300px;
-    width: 600px;
-    top: 300px;
-    left: 150px;
-    opacity: 0;
-}
 
 .text-container{
     max-width: 600px;
@@ -119,18 +96,15 @@ lamp-container{
 }
 
 .active span{
-    background: #fff;
+    background: #ffffff;
     margin-left: 31px;
-}
-
-.on {
-    opacity: 1;
 }
 
 a:hover{
     position: relative;
-    background: #00986f;
-    border-radius: 10px;
+    background: #f3f3f7;
+    border-radius: 15px;
+    font-size: 32px;
 }
 
 canvas {
@@ -160,3 +134,12 @@ canvas {
     padding: 20px;
     color: #fff;
 }
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
