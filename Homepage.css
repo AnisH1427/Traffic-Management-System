@@ -7,7 +7,7 @@
 .home{
     background: linear-gradient(to bottom, rgb(179, 179, 196), #3dcc16);
     position: relative;
-    color: #618f32;
+    color: #3b690d;
     width: 100%;
     min-height: 100vh;
     font-size: 20px;
@@ -15,20 +15,34 @@
 
 nav{
     display: flex;
-    padding: 10px 8%;
+    padding: 10px ;
     align-items: center;
+    background: #287bff;
+    height: 130px;
+    width: 100%;
+}
+
+nav h1{
+    color: #fff;
+    margin-left: 180px;
+    margin-top: -70px;
+    font-size: xx-large;
 }
 
 nav .menu-img{
     margin-right: 20px;
     width: 25px;
     cursor: pointer;
+    margin-left: 20px;
+    margin-top: 40px;
 }
 
 nav .logo{
     height: 100px;
     width: 100px;
     cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 nav ul{
@@ -37,41 +51,35 @@ nav ul{
 }
 
 nav ul li{
-    display: inline-block;
-    margin: 0 20px;
+    display: inline;
+    margin: 20px;
     list-style: none;
+    padding: 20px;
 }
 
 nav ul li a{
     text-decoration: none;
-    color: #de7c05;
-}
-
-button{
-    background: #efefef;
-    height: 30px;
-    width: 60px;
-    cursor: pointer;
-    border-radius: 20px;
-    border: 0;
-    outline: 0;
-    transition: background 0.5s;
-}
-
-button span{
-    display: block;
-    background: #999;
-    height: 25px;
-    width: 25px;
+    color: #fff;
+    background: #287bff;
     border-radius: 50%;
-    margin-left: 2px;
-    transition: background 0.5s, margin-left 0.5s;
 }
 
+.active{
+    background: #003cb3;
+    padding: 10px 10px;
+    border-radius: 50%;
+}
+
+a:hover{
+    position: relative;
+    background: rgb(179, 179, 196);
+    padding: 10px 10px;
+    border-radius: 50%;
+}
 
 .text-container{
     max-width: 600px;
-    margin-top: 10%;
+    margin-top: 0%;
     margin-left: 10%;
 }
 
@@ -86,25 +94,15 @@ button span{
     color:#fff;
     background: #00986f;
     font-size: 20px;
-    border-radius: 40px;
+    border-radius: 50%;
     padding: 14px 40px;
     margin-top: 20px;
 }
 
-.active{
-    background: green;
-}
-
-.active span{
-    background: #ffffff;
-    margin-left: 31px;
-}
-
-a:hover{
-    position: relative;
-    background: #f3f3f7;
-    border-radius: 15px;
-    font-size: 32px;
+.text-container a:hover{
+    background: rgb(179, 179, 196);
+    padding: 14px 40px;
+    border-radius: 50%;
 }
 
 canvas {
@@ -117,14 +115,15 @@ canvas {
     justify-content: center;
     align-items: center;
     margin-left: 50%;
-    margin-top: -25%;
+    margin-top: -20%;
+    padding: 50px;
 }
 
 .footer{
     display: flex;
     height: 60px;
     width: 100%;
-    background:#999;
+    background:#5a5c61;
     justify-content: center;
     text-align: center;
     margin-top: 83px;
@@ -134,12 +133,13 @@ canvas {
     padding: 20px;
     color: #fff;
 }
+
 .container {
     display: flex;
     justify-content: center;
   }
   
-  .row {
+.row {
     display: flex;
     flex-wrap: wrap;
-  }
+}
