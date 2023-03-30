@@ -4,37 +4,31 @@
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
 }
-
 .home{
-    background:#fff;
+    background: linear-gradient(to bottom, rgb(179, 179, 196), #3dcc16);
     position: relative;
-    color: #272525;;
+    color: #618f32;
     width: 100%;
     min-height: 100vh;
+    font-size: 20px;
 }
 
 nav{
     display: flex;
-    padding: 10px ;
+    padding: 10px 8%;
     align-items: center;
-    background: #287bff;
 }
 
-nav h1{
-    color: #fff;
-}
 nav .menu-img{
     margin-right: 20px;
     width: 25px;
     cursor: pointer;
-    margin-left: 20px;
 }
 
 nav .logo{
     height: 100px;
     width: 100px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 nav ul{
@@ -43,31 +37,37 @@ nav ul{
 }
 
 nav ul li{
-    display: inline;
-    margin: 20px;
+    display: inline-block;
+    margin: 0 20px;
     list-style: none;
-    padding: 20px;
 }
 
 nav ul li a{
     text-decoration: none;
-    color: #fff;
-    background: #287bff;
-    padding: 10px 10px;
-    border-radius: 50%;
+    color: #de7c05;
 }
 
-.active{
-    background: #003cb3;
-    padding: 10px 10px;
-    border-radius: 50%;
+button{
+    background: #efefef;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    transition: background 0.5s;
 }
 
-a:hover{
-    background: #3C5353;
-    padding: 10px 10px;
+button span{
+    display: block;
+    background: #999;
+    height: 25px;
+    width: 25px;
     border-radius: 50%;
+    margin-left: 2px;
+    transition: background 0.5s, margin-left 0.5s;
 }
+
 
 .text-container{
     max-width: 600px;
@@ -76,7 +76,7 @@ a:hover{
 }
 
 .text-container h1{
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 200;
 }
 
@@ -84,11 +84,27 @@ a:hover{
     text-decoration: none;
     display: inline-block;
     color:#fff;
-    background: #003cb3;
+    background: #00986f;
     font-size: 20px;
-    border-radius: 40%;
+    border-radius: 40px;
     padding: 14px 40px;
     margin-top: 20px;
+}
+
+.active{
+    background: green;
+}
+
+.active span{
+    background: #ffffff;
+    margin-left: 31px;
+}
+
+a:hover{
+    position: relative;
+    background: #f3f3f7;
+    border-radius: 15px;
+    font-size: 32px;
 }
 
 canvas {
@@ -106,26 +122,24 @@ canvas {
 
 .footer{
     display: flex;
-    height: 100px;
+    height: 60px;
     width: 100%;
-    background:#d2d5db;
+    background:#999;
     justify-content: center;
     text-align: center;
+    margin-top: 83px;
 }
 
 .footer h5{
-<<<<<<< HEAD
-<<<<<<< HEAD
-    padding: 50px;
-    color: #272525;
-}
-=======
     padding: 20px;
     color: #fff;
 }
->>>>>>> 88f0df32476a1f892a35a0d2dbf8de1f8845388f
-=======
-    padding: 50px;
-    color: #272525;
-}
->>>>>>> b1ab691c1e13eed70b34c03420a48f0099b096fa
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
