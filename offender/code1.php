@@ -2,14 +2,14 @@
 
 require 'connect.php';
 
-if(isset($_POST['save_police']))
+if(isset($_POST['save_offender']))
 {
-    $Name = mysqli_real_escape_string($conn, $_POST['name']);
-    $MobileNumber = mysqli_real_escape_string($conn, $_POST['phone']);
-    $Email = mysqli_real_escape_string($conn, $_POST['email']);
-    $Location_Name = mysqli_real_escape_string($conn, $_POST['location']);
+    $Offender_Name = mysqli_real_escape_string($conn, $_POST['name']);
+    $Offense_type_Id = mysqli_real_escape_string($conn, $_POST['offense_type']);
+    $Police_Id = mysqli_real_escape_string($conn, $_POST['police_id']);
+    $Date = mysqli_real_escape_string($conn, $_POST['date']);
 
-    if($Name == NULL || $MobileNumber == NULL || $Email == NULL || $Location_Name == NULL)
+    if($Offender_Name == NULL || $Offense_type_Id == NULL || $Police_Id == NULL || $Date == NULL)
     {
         $res = [
             'status' => 422,
@@ -19,14 +19,14 @@ if(isset($_POST['save_police']))
         return;
     }
 
-    $query = "INSERT INTO police (Name,MobileNumber,Email,Location_Name) VALUES ('$Name','$MobileNumber','$Email','$Location_Name')";
+    $query = "INSERT INTO `offense_record` (`Offender_Name`,`Offense_type_Id`,`Police_Id`,`Date`) VALUES ('$Offender_Name','$Offense_type_Id','$Police_Id','$Date')";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
     {
         $res = [
             'status' => 200,
-            'message' => 'Police Created Successfully'
+            'message' => 'Offender Created Successfully'
         ];
         echo json_encode($res);
         return;
@@ -35,7 +35,7 @@ if(isset($_POST['save_police']))
     {
         $res = [
             'status' => 500,
-            'message' => 'Police Not Created'
+            'message' => 'Offender Not Created'
         ];
         echo json_encode($res);
         return;
@@ -43,16 +43,23 @@ if(isset($_POST['save_police']))
 }
 
 
-if(isset($_POST['update_police']))
+if(isset($_POST['update_offender']))
 {
-    $police_id = mysqli_real_escape_string($conn, $_POST['police_id']);
+    $Offender_Name = mysqli_real_escape_string($conn, $_POST['name']);
+    $Offense_type_Id = mysqli_real_escape_string($conn, $_POST['offense_type']);
+    $Police_Id = mysqli_real_escape_string($conn, $_POST['police_id']);
+    $Date = mysqli_real_escape_string($conn, $_POST['date']);
+    $id = mysqli_real_escape_string($conn, $_POST['offense_id']);
 
-    $Name = mysqli_real_escape_string($conn, $_POST['name']);
-    $MobileNumber = mysqli_real_escape_string($conn, $_POST['phone']);
-    $Email = mysqli_real_escape_string($conn, $_POST['email']);
-    $Location_Name = mysqli_real_escape_string($conn, $_POST['location']);
+    // $offence_record_id = mysqli_real_escape_string($conn, $_POST['offence_record_id']);
 
-    if($Name == NULL || $MobileNumber == NULL || $Email == NULL || $Location_Name == NULL)
+    // $Offender_Name = mysqli_real_escape_string($conn, $_POST['name']);
+    // $Offense_type_Id = mysqli_real_escape_string($conn, $_POST['type']);
+    // $Police_Id = mysqli_real_escape_string($conn, $_POST['location']);
+    // $Police_Id = mysqli_real_escape_string($conn, $_POST['policename']);
+    // $Date = mysqli_real_escape_string($conn, $_POST['date']);
+
+    if($Offender_Name == NULL || $Offense_type_Id == NULL || $Police_Id == NULL || $Date == NULL)
     {
         $res = [
             'status' => 422,
@@ -62,15 +69,14 @@ if(isset($_POST['update_police']))
         return;
     }
 
-    $query = "UPDATE police SET Name='$Name', MobileNumber='$MobileNumber', Email='$Email', Location_Name='$Location_Name' 
-                WHERE id='$police_id'";
+    $query = "UPDATE `offense_record` SET `Offender_Name`='{$Offender_Name}', `Offense_type_Id`='{$Offense_type_Id}', `Date`='{$Date}' WHERE `id`='{$id}'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
     {
         $res = [
             'status' => 200,
-            'message' => 'Police Updated Successfully'
+            'message' => 'Offender Updated Successfully'
         ];
         echo json_encode($res);
         return;
@@ -79,7 +85,7 @@ if(isset($_POST['update_police']))
     {
         $res = [
             'status' => 500,
-            'message' => 'Police Not Updated'
+            'message' => 'Offender Not Updated'
         ];
         echo json_encode($res);
         return;
@@ -87,21 +93,30 @@ if(isset($_POST['update_police']))
 }
 
 
-if(isset($_GET['police_id']))
+if(isset($_GET['offender_id']))
 {
-    $police_id = mysqli_real_escape_string($conn, $_GET['police_id']);
+    $offence_record_id = mysqli_real_escape_string($conn, $_GET['offender_id']);
 
-    $query = "SELECT * FROM police WHERE id='$police_id'";
+    $query = "SELECT * FROM `offense_record` WHERE `id` = '$offence_record_id'";
     $query_run = mysqli_query($conn, $query);
 
     if(mysqli_num_rows($query_run) == 1)
     {
-        $police = mysqli_fetch_array($query_run);
+        $offence_record = mysqli_fetch_assoc($query_run);
+
+        $fetchPolice = "SELECT `Name` FROM `police` WHERE `id` = '{$offence_record["Police_Id"]}'";
+        $resFetchPolice = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice));
+        
+        $fetchOffense = "SELECT `Name` FROM `offense_type` WHERE `id` = '{$offence_record["Offense_Type_Id"]}'";
+        $resFetchOffense = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffense));
+
+        $offence_record["policeName"] = $resFetchPolice["Name"];
+        $offence_record["offenseType"] = $resFetchOffense["Name"];
 
         $res = [
             'status' => 200,
-            'message' => 'Police Fetch Successfully by id',
-            'data' => $police
+            'message' => 'Offender Fetch Successfully by id',
+            'data' => $offence_record
         ];
         echo json_encode($res);
         return;
@@ -110,25 +125,25 @@ if(isset($_GET['police_id']))
     {
         $res = [
             'status' => 404,
-            'message' => 'Police Id Not Found'
+            'message' => 'Offender Id Not Found'
         ];
         echo json_encode($res);
         return;
     }
 }
 
-if(isset($_POST['delete_police']))
+if(isset($_POST['delete_offender']))
 {
-    $police_id = mysqli_real_escape_string($conn, $_POST['police_id']);
+    $offence_record_id = mysqli_real_escape_string($conn, $_POST['offender_id']);
 
-    $query = "DELETE FROM police WHERE id='$police_id'";
+    $query = "DELETE FROM `offense_record` WHERE `id`='{$offence_record_id}'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
     {
         $res = [
             'status' => 200,
-            'message' => 'Police Deleted Successfully'
+            'message' => 'Offender Deleted Successfully'
         ];
         echo json_encode($res);
         return;
@@ -137,11 +152,50 @@ if(isset($_POST['delete_police']))
     {
         $res = [
             'status' => 500,
-            'message' => 'Police Not Deleted'
+            'message' => 'Offender Not Deleted'
         ];
         echo json_encode($res);
         return;
     }
 }
+
+
+if(isset($_POST["getOffenseType"])):
+    $sql = "SELECT * FROM `offense_type`";
+    $res = mysqli_query($conn, $sql);
+    if($res):
+        // Query Execution Success
+        $html = '<li value="0"><a class="dropdown-item">Offense Type</a></li>';
+        while($got = mysqli_fetch_assoc($res)):
+            $id = $got["Id"];
+            $name = $got["Name"];
+            $html .= '<li value="'.$id.'"><a class="dropdown-item">'.$name.'</a></li>' ;
+        endwhile;
+        echo $html;
+
+    else:
+        // Query Execution Error
+    endif;
+
+endif;
+
+if(isset($_POST["getPoliceName"])):
+    $sql = "SELECT * FROM `police`";
+    $res = mysqli_query($conn, $sql);
+    if($res):
+        // Query Execution Success
+        $html = '<li value="0"><a class="dropdown-item">Police Name</a></li>';
+        while($got = mysqli_fetch_assoc($res)):
+            $id = $got["Id"];
+            $name = $got["Name"];
+            $html .= '<li value="'.$id.'"><a class="dropdown-item">'.$name.'</a></li>' ;
+        endwhile;
+        echo $html; 
+
+    else:
+        // Query Execution Error
+    endif;
+
+endif;
 
 ?>

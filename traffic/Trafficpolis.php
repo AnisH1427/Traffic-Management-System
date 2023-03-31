@@ -51,6 +51,12 @@
                 </li>
                 <li>
                     <a href="#">
+                        <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+                        <span class="title">E-challan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Challan Log</span>
                     </a>
@@ -170,7 +176,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update Student</button>
+                            <button type="submit" class="btn btn-primary">Update Police</button>
                         </div>
                     </form>
                 </div>
