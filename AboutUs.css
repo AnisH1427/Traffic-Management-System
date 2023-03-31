@@ -4,8 +4,9 @@
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
 }
-.home{
-    background: linear-gradient(to bottom, rgb(179, 179, 196), #3dcc16);
+
+.aboutUs{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.877), #80bb75);
     position: relative;
     color: #3b690d;
     width: 100%;
@@ -24,8 +25,8 @@ nav{
 
 nav h1{
     color: #fff;
-    margin-left: 180px;
-    margin-top: -70px;
+    margin-left: 0px;
+    margin-top: -30px;
     font-size: xx-large;
 }
 
@@ -33,16 +34,16 @@ nav .menu-img{
     margin-right: 20px;
     width: 25px;
     cursor: pointer;
-    margin-left: 20px;
-    margin-top: 40px;
+    margin-left: 26px;
+    margin-top: -32px;
 }
 
 nav .logo{
     height: 100px;
     width: 100px;
     cursor: pointer;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: 0px;
+    margin-top: -10px;
 }
 
 nav ul{
@@ -65,13 +66,13 @@ nav ul li a{
 }
 
 .active{
+    position: relative;
     background: #003cb3;
     padding: 10px 10px;
     border-radius: 50%;
 }
 
 a:hover{
-    position: relative;
     background: rgb(179, 179, 196);
     padding: 10px 10px;
     border-radius: 50%;
@@ -79,12 +80,12 @@ a:hover{
 
 .text-container{
     max-width: 600px;
-    margin-top: 0%;
+    margin-top: 5%;
     margin-left: 10%;
 }
 
 .text-container h1{
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 200;
 }
 
@@ -92,54 +93,65 @@ a:hover{
     text-decoration: none;
     display: inline-block;
     color:#fff;
-    background: #00986f;
+    background: #002b80;
     font-size: 20px;
-    border-radius: 50%;
+    border-radius: 40%;
     padding: 14px 40px;
     margin-top: 20px;
 }
 
-.text-container a:hover{
-    background: rgb(179, 179, 196);
-    padding: 14px 40px;
-    border-radius: 50%;
+.ourmission{
+    height: 300px;
+    width: 300px;
+    margin-left: 120%;
+    margin-top: -50%;
 }
 
-canvas {
-    max-width: 300px;
-    max-height: 300px;
-}
-
-#pie-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.next-container{
+    max-width: 600px;
+    margin-top: 5%;
     margin-left: 50%;
-    margin-top: -20%;
-    padding: 50px;
+}
+
+.next-container h1{
+    font-size: 40px;
+    font-weight: 200;
+}
+
+.next-container a{
+    text-decoration: none;
+    display: inline-block;
+    color:#fff;
+    background: #003cb3;
+    font-size: 20px;
+    border-radius: 40%;
+    padding: 20px 50px;
+    margin-top: 20px;
+}
+
+.ourstory{
+    height: 300px;
+    width: 500px;
+    margin-left: -150%;
+    margin-top: -36%;
+}
+
+.next-container a:hover{
+    background: rgb(179, 179, 196);
+    padding: 20px 50px;
+    border-radius: 50%;
 }
 
 .footer{
     display: flex;
-    height: 60px;
+    height: 100px;
     width: 100%;
     background:#5a5c61;
     justify-content: center;
     text-align: center;
-    margin-top: 83px;
 }
 
 .footer h5{
-    padding: 20px;
-    color: #fff;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-  }
-  
-.row {
-    display: flex;
-    flex-wrap: wrap;
+    padding: 50px;
+    color: #ffffff;
 }

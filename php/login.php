@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'tms');
+include "connect.php";
+$conn = mysqli_connect('127.0.0.1:3307', 'root', '', 'tms');
 extract($_POST);
 
 $sql = "SELECT `user_id` FROM `user` WHERE `Name` = '{$Username}' AND `user_password` = '{$Password}' ";
