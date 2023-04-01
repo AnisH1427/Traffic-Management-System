@@ -48,17 +48,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../offender/vechiles.html">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
                         <span class="title">Vechiles</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
                         <span class="title">E-challan</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="#">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
@@ -93,7 +93,7 @@
                 <div class="menu">
                     <ul>
                         <li><img src=""><a href="#">My profile</a></li>
-                        <li><img src=""><a href="#">Edit profile</a></li>
+                        <!-- <li><img src=""><a href="#">Edit profile</a></li> -->
                         <li><img src=""><a href="#">logout</a></li>
                     </ul>
                 </div>

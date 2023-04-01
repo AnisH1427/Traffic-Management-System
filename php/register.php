@@ -8,7 +8,7 @@ $response = [];
 if($res):
     // Query Execution Success
     $response[] = "Success";
-    header("Location: ../Login.html");
+    header("Location: ../Login.html ");
 else:
     // Query Execution Error
     $response[] = "Failed";
