@@ -60,7 +60,7 @@
                     </a>
                 </li> -->
                 <li>
-                    <a href="#">
+                    <a href="../offender/challanlog.html">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Challan Log</span>
                     </a>
@@ -266,7 +266,7 @@
                                     <tbody>
                                         <?php
                                         require 'connect.php';
-
+                                        // Fetch the offender data from the offender table 
                                         $query = "SELECT * FROM offense_record";
                                         $query_run = mysqli_query($conn, $query);
 
@@ -382,7 +382,7 @@
     $(document).ready(function() {
         // Start_Later
         // Show Add Form
-        $("#showAddForm").click(function(){
+        $("#showAddForm").click(function() {
             $('#offenderAddModal').modal('show');
         });
         // Retrive Offense Type From DB

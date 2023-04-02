@@ -24,21 +24,22 @@
                 </div>
                 <div class="col-md-6 right">
                     <div class="input-box">
-                        <header>Welcome to Hamro Traffic</header>
-                        <!-- hbshbfskfjbskfs -->
+                        <header>Log In</header>
+                        <!-- login form -->
                         <form action="php/login.php" method="post" autocomplete="off">
                             <div class="input-field">
                                 <input type="text" class="input" id="userName" name="Username" required>
                                 <label for="userName">Username or Email</label>
                             </div>
-                            <!-- <div class="input-field">
-                            <input type="text" class="input" id="email" name="Email" required autocomplete="off">
-                            <label for="email">Email</label>
-                        </div> -->
                             <div class="input-field">
                                 <input type="password" class="input" id="password" name="Password" required>
                                 <label for="password">Password</label>
                             </div>
+                            <select  class="combo-box" name="user_type">
+                                <option value="user">user</option>
+                                <option value="admin">admin</option>
+                             </select>
+                             <br><br>
                             <div class="input-field">
                                 <input type="submit" class="submit" value="Login" onclick="Homepage">
                         </form>

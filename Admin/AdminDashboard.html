@@ -11,10 +11,11 @@
 
 <body>
     <div class="container">
+        <!-- Side Nav Bar -->
         <div class="navigation">
             <div class="logo">
-            <img src="../images/HamroTrafficLogo.png" alt="" width="40" height="40">
-        </div>
+                <img src="../images/HamroTrafficLogo.png" alt="" width="40" height="40">
+            </div>
             <ul>
                 <li>
                     <a href="#">
@@ -41,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../offender/vechiles.html">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
                         <span class="title">Vechiles</span>
                     </a>
@@ -53,7 +54,7 @@
                     </a>
                 </li> -->
                 <li>
-                    <a href="#">
+                    <a href="../offender/challanlog.html">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Challan Log</span>
                     </a>
@@ -68,6 +69,7 @@
         </div>
         <!-- main -->
         <div class="main">
+            <!-- Top bar Start -->
             <div class="topbar">
                 <div class="toogle">
                     <ion-icon name="menu-outline"></ion-icon>
@@ -79,24 +81,20 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-                <!-- UserImage -->
-                <!-- <div class="user">
-                <img src="baby.jpg">
-            </div> -->
-               
-                    <div class="profile" onclick="MenuToggle();">
-                        <img src="../images/profile.png" alt="">
-                    </div>
-                    <div class="menu">
-                        <ul>
-                            <li><img src=""><a href="#">My profile</a></li>
-                            <li><img src=""><a href="#">Edit profile</a></li>
-                            <li><img src=""><a href="#">logout</a></li>
-                        </ul>
-                    </div>
                 
+                <div class="profile" onclick="MenuToggle();">
+                    <img src="../images/profile.png" alt="">
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><img src=""><a href="#">My profile</a></li>
+                        <li><img src=""><a href="#">Edit profile</a></li>
+                        <li><img src=""><a href="#">logout</a></li>
+                    </ul>
+                </div>
+
                 <script>
-                    function MenuToggle(){
+                    function MenuToggle() {
                         const toggleMenu = document.querySelector('.menu');
                         toggleMenu.classList.toggle('active')
                     }

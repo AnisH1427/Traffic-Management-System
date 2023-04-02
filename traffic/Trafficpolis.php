@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="../offender/vechiles.html">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
                         <span class="title">Vechiles</span>
                     </a>
@@ -56,7 +56,7 @@
                     </a>
                 </li> -->
                 <li>
-                    <a href="#">
+                    <a href="../offender/challanlog.html">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Challan Log</span>
                     </a>
