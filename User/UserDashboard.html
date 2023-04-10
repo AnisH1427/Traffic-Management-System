@@ -6,33 +6,108 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="UserDashboard.css">
-    <title>User | Dashboard</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>User Dashboard</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script>
 </head>
 
-<body>
-    <div class="container">
-    <div class="top-nav">
-        <div class="main">
-        <ul>
-            <li class="logo">Hamro Traffic</li>
-            <div class="items">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Challan history</a></li>
-                <li><a href="#">About us</a></li>
+<body onload="initMap()">
+    <div class="userhome">
+        <div class="nav">
+            <img src="images/logo.png" class="logo">
+            <img src="images/menu.png" class="menu-img">
+            <h1>Hamro Traffic System</h1>
+            <div class="navbar">
+                <ul>
+                    <li><a class="active" href="">Home</a></li>
+                    <li><a class="about" href="AboutUs.html">About us</a></li>
+                    <li><a class="notification" href="#"><span>Notifications</span><span class="badge">3</span></a></li>
+                    <div class="profile">
+                    <button onclick="myFunction()" class="dropbtn" style='font-size:24px'>Profile<img src="images/profile.png" class="profile-img"></button>
+                    <div id="myDropdown" class="profile-content">
+                      <a href="#">My Profile</a>
+                      <a href="#">Edit Profile</a>
+                      <a href="Login.html">Logout</a>
+                    </div>
+                    </div>
+                </ul>
             </div>
-            <li class="search-icon">
-                <input type="search" placeholder="Search">
-                <label class="icon">
-                    <span class="fas fa-search"></span>
-                </label>
-            </li>
-        </ul>
-    </div>  
-</div>
-    Sagar
-</div>
+        </div>
+        <div class="map">
+            <input id="search" type="text" placeholder="Search for a location">
+            <button id="search-button">Search</button>
+            <div id="map" style="height: 400px; width: 100%;"></div>
+            <div class="green">No traffic delays</div>
+            <div class="orange">Medium amount of traffic</div>
+            <div class="red">Heavy traffic delays</div>
+        </div>
+    </div>
+    <div class="service">
+        <p>Services</p>
+        <div class="chat">
+            <button>
+                chat with us>>
+            </button>
+        </div>
+        <div class="payment">
+            <button>
+                challani payment>>
+            </button>
+        </div>
 
+    </div>
+    <div class="challani">
+        <button>
+            <h1>Challani History</h1>
+        </button>
+    </div>
+    <div class="footer">
+        <p>@copyright2023/HamroTraffic</p>
+    </div>
+
+<script>
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("profile-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<script>
+    function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 27.7172, lng: 85.3240},
+        zoom: 10
+    });
+
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+
+    var input = document.getElementById('search');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
+
+    var searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', function() {
+        var place = autocomplete.getPlace();
+        if (place.geometry) {
+            map.setCenter(place.geometry.location);
+            map.setZoom(15);
+        } else {
+            alert('Location not found');
+        }
+    });
+}
+</script>
 </body>
 
 </html>

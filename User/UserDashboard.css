@@ -1,118 +1,246 @@
 *{
-    padding: 0;
     margin: 0;
-    color: #f2f2f2;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'poppins', sans-serif;
 }
-.top-nav{
-    background: linear-gradient(#2d0868,#7597de);
-    padding: 10px 40px 10px 70px;
-    border: 1px solid #000;
-    border-left: none;
-    border-right: none;
-    height: 65px;
+
+.userhome{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.877), #80bb75);
+    position: relative;
+    color: #3b690d;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 20px;
 }
-.top-nav ul{
+
+.menu-img{
+    margin-right: 20px;
+    width: 25px;
+    cursor: pointer;
+    margin-left: 26px;
+    margin-top: -32px;
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    margin-left: 0px;
+    margin-top: -10px;
+}
+
+.nav{
     display: flex;
-    list-style: none;
-    flex-wrap: wrap;
+    padding: 10px ;
     align-items: center;
-    justify-content: center;
+    background: #287bff;
+    height: 130px;
+    width: 100%;
 }
-.top-nav ul li.logo{
-    flex: 1;
-    font-size: 40px;
-    font-weight: 700;
-}
-.top-nav ul li a{
-    text-decoration: none;
-    padding: 6px 15px;
+
+.nav h1{
     color: #fff;
-    border-radius: 20px;
+    margin-left: 0px;
+    margin-top: -32px;
+    font-size: xx-large;
 }
-.top-nav ul div.items{
-    padding: 0 25px;
-    display: inline-flex;
+
+.navbar ul{
+    flex: 1;
+    text-align: right;
+    margin-left: 200px;
 }
-.top-nav ul div.items a{
+
+.navbar ul li{
+    display: inline;
+    margin: 15px;
+    list-style: none;
+    padding: 10px;
+}
+
+.navbar ul li a{
     text-decoration: none;
-    font-size: 18px;
-    padding: 0 18px;
-    font-family: Arial;
+    color: #fff;
+    background: #287bff;
+    border-radius: 50%;
 }
-.top-nav ul .search-icon{
-    height: 40px;
-    width: 240px;
-    display: flex;
-    background-color: #f2f2f2;
-    border-radius: 5px ;
+
+.navbar .active{
+    background: #00b30f;
+    padding: 10px 10px;
+    border-radius: 50%;
 }
-.top-nav ul div.items a:hover{
-    background: #fff;
-    color: #2b1055;
+
+.active:hover{
+    background: rgb(9, 173, 124);
 }
-label.logo{
-    color: whitesmoke;
-    font-size: 30px;
-    line-height: 70px;
-    padding: 0 100px;
-    font-weight: bold;
+
+.navbar .about{
+    padding: 10px 10px;
+    border-radius: 50%;
 }
-.top-nav .search-icon input{
-    height: 100%;
-    width: 200px;
-    border: none;
-    outline: none;
-    padding: 0 10px;
-    color: #000;
+
+.about:hover{
+    background: rgb(9, 173, 124);
+}
+
+.notification {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 10px 10px;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+}
+  
+.notification:hover {
+    background: rgb(9, 173, 124);
+}
+  
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: rgb(247, 95, 95);
+    color: white;
+}
+
+
+.dropbtn {
+    background-color: #287bff;
+    color: white;
+    padding: 16px;
     font-size: 16px;
-    border-radius: 5px 0 0 5px;
-}
-.top-nav .search-icon .icon{
-    height: 100%;
-    width: 40px;
-    line-height: 40px;
-    text-align: center;
-    border: 1px solid #cccccc;
-    border-radius: 0 5px 5px 0;
+    border: none;
     cursor: pointer;
 }
-.top-nav .search-icon .icon:hover{
-    background-color: #e6e6e6;
-}
-.top-nav .search-icon .icon span{
-    color: #222222;
-    font-size: 18px;
-}
-@media screen and (max-width: 1052px){
-    .top-nav{
-        padding: 10px 40px 10px 0px;
-    }
-    .top-nav ul li.logo{
-        display: none;
-    }
-    .top-nav ul div.items{
-        flex: 4;
-    }
-}
-.top-nav .ul .img{
-        max-width: 100%;
-        max-height: 100%;
-    }
-    
-    .portrait {
-        height: 80px;
-        width: 30px;
-    }
-    
-    .landscape {
-        height: 30px;
-        width: 80px;
-    }
-    
-    .square {
-        height: 75px;
-        width: 75px;
-    }
+  
 
+.dropbtn:hover, .dropbtn:focus {
+    background-color:  rgb(9, 173, 124);
+    border-radius: 50%;
+}
+  
+.profile {
+    position: relative;
+    display: inline-block;
+    flex: 1;
+    text-align: right;
+    padding: 10px 10px;
+}
+
+.profile-img{
+    height: 25px;
+    width: 30px;
+}
+
+.profile-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.profile-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.profile-content a:hover {background-color: #ddd;}
+  
+.show {display:block;}
+
+.green {
+    background-color: #87cb54;
+    height: 20px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+}
+  
+.orange {
+    background-color: #f07d02;
+    height: 20px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+}
+  
+.red {
+    background-color: #e60000;
+    height: 20px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+}
+
+.map{
+    max-width: 80%;
+    margin-left: 10%;
+}
+
+.service{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.877), #8275bb);
+    position: relative;
+    color: #3b690d;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 20px;
+    margin: 20px 0px;
+}
+
+.chat{
+    width: 150px;
+    height: 150px;
+    background: #287bff;
+    margin: 20px 20px;
+    text-decoration: none;
+    color: #e60000;
+}
+
+.payment{
+    width: 150px;
+    height: 150px;
+    background: #287bff;
+    margin: 20px 20px;
+    text-decoration: none;
+    color: #e60000;
+}
+
+.challani{
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.877), #bb7575);
+    position: relative;
+    color: #3b690d;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 20px;
+    padding: 10px 10px;
+}
+
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+}
+.footer p{
+    padding: 50px;
+}
