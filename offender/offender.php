@@ -287,12 +287,12 @@
                                                     <td>
                                                         <!-- <button type="button" value=" -->
                                                         <?php
-                                                        // $offense_record['Id'] 
+                                                        // $offense_record['Id']
                                                         ?>
                                                         <!-- " class="viewOffenseBtn btn btn-info btn-sm">View</button> -->
                                                         <button type="button" value="<?= $offense_record['Id'] ?>" class="editOffenseBtn btn btn-success btn-sm">Edit</button>
                                                         <button type="button" value="<?= $offense_record['Id'] ?>" class="deleteOffenseBtn btn btn-danger btn-sm">Delete</button>
-                                                    </td>
+                                                    </td=
                                                 </tr>
                                         <?php
                                             }
