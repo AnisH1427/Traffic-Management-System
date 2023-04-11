@@ -7,7 +7,6 @@ if(isset($_POST['save_offender']))
     $Offense_type_Id = mysqli_real_escape_string($conn, $_POST['offense_type']);
     $Police_Id = mysqli_real_escape_string($conn, $_POST['police_id']);
     $Date = mysqli_real_escape_string($conn, $_POST['date']);
-    $time = mysqli_real_escape_string($conn, $_POST['time']);
 
     if($Offender_Name == NULL || $Offense_type_Id == NULL || $Police_Id == NULL || $Date == NULL)
     {
@@ -19,7 +18,7 @@ if(isset($_POST['save_offender']))
         return;
     }
 
-    $query = "INSERT INTO `offense_record` (`Offender_Name`,`Offense_type_Id`,`Police_Id`,`Date`, `time`) VALUES ('$Offender_Name','$Offense_type_Id','$Police_Id','$Date', '{$time}')";
+    $query = "INSERT INTO `offense_record` (`Offender_Name`,`Offense_type_Id`,`Police_Id`,`Date`) VALUES ('$Offender_Name','$Offense_type_Id','$Police_Id','$Date')";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
@@ -69,7 +68,7 @@ if(isset($_POST['update_offender']))
         return;
     }
 
-    $query = "UPDATE `offense_record` SET `Offender_Name`='{$Offender_Name}', `Offense_type_Id`='{$Offense_type_Id}', `Date`='{$Date}' WHERE `offense_Id`='{$id}'";
+    $query = "UPDATE `offense_record` SET `Offender_Name`='{$Offender_Name}', `Offense_type_Id`='{$Offense_type_Id}', `Date`='{$Date}' WHERE `id`='{$id}'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
@@ -97,7 +96,7 @@ if(isset($_GET['offender_id']))
 {
     $offence_record_id = mysqli_real_escape_string($conn, $_GET['offender_id']);
 
-    $query = "SELECT * FROM `offense_record` WHERE `offense_Id` = '$offence_record_id'";
+    $query = "SELECT * FROM `offense_record` WHERE `id` = '$offence_record_id'";
     $query_run = mysqli_query($conn, $query);
 
     if(mysqli_num_rows($query_run) == 1)
@@ -107,11 +106,11 @@ if(isset($_GET['offender_id']))
         $fetchPolice = "SELECT `Name` FROM `police` WHERE `id` = '{$offence_record["Police_Id"]}'";
         $resFetchPolice = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice));
         
-        $fetchOffense = "SELECT `type_Name` FROM `offense_type` WHERE `id` = '{$offence_record["Offense_Type_Id"]}'";
+        $fetchOffense = "SELECT `Name` FROM `offense_type` WHERE `id` = '{$offence_record["Offense_Type_Id"]}'";
         $resFetchOffense = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffense));
 
         $offence_record["policeName"] = $resFetchPolice["Name"];
-        $offence_record["offenseType"] = $resFetchOffense["type_Name"];
+        $offence_record["offenseType"] = $resFetchOffense["Name"];
 
         $res = [
             'status' => 200,
@@ -136,7 +135,7 @@ if(isset($_POST['delete_offender']))
 {
     $offence_record_id = mysqli_real_escape_string($conn, $_POST['offender_id']);
 
-    $query = "DELETE FROM `offense_record` WHERE `offense_Id`='{$offence_record_id}'";
+    $query = "DELETE FROM `offense_record` WHERE `id`='{$offence_record_id}'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
@@ -168,7 +167,7 @@ if(isset($_POST["getOffenseType"])):
         $html = '<li value="0"><a class="dropdown-item">Offense Type</a></li>';
         while($got = mysqli_fetch_assoc($res)):
             $id = $got["Id"];
-            $name = $got["type_Name"];
+            $name = $got["Name"];
             $html .= '<li value="'.$id.'"><a class="dropdown-item">'.$name.'</a></li>' ;
         endwhile;
         echo $html;

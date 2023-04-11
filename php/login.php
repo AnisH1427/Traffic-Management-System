@@ -13,9 +13,10 @@ $res = mysqli_query($conn, $sql);
 if (mysqli_num_rows($res) > 0) {
     // Query Execution Success
     $got = mysqli_fetch_assoc($res);
+    session_start();
     $_SESSION["userID"] = $got['Id'];
     if ($user_type === 'user')
-        header("Location: ../Homepage.html");
+        header("Location: ../User/test.php");
     elseif ($user_type === 'admin')
         header("Location: ../Admin/adminDashboard.php");
     // exit();

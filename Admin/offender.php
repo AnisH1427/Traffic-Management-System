@@ -19,35 +19,8 @@
         <!-- main -->
         <!-- Main div start -->
         <div class="main">
-            <div class="topbar">
-                <div class="toogle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-                <!-- Search  -->
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                <div class="profile" onclick="MenuToggle();">
-                    <img src="../images/profile.png" alt="">
-                </div>
-                <div class="menu">
-                    <ul>
-                        <li><img src=""><a href="#">My profile</a></li>
-                        <!-- <li><img src=""><a href="#">Edit profile</a></li> -->
-                        <li><img src=""><a href="#">logout</a></li>
-                    </ul>
-                </div>
+            <?php include("assets/top.php"); ?>
 
-                <script>
-                    function MenuToggle() {
-                        const toggleMenu = document.querySelector('.menu');
-                        toggleMenu.classList.toggle('active')
-                    }
-                </script>
-            </div>
             <!-- Bootstrap CSS -->
             <!-- Button trigger modal -->
 
@@ -86,6 +59,10 @@
                                 <div class="mb-3">
                                     <label for="">Date</label>
                                     <input type="date" name="date" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appt">Select a time:</label>
+                                    <input type="time" id="time" name="time">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -215,7 +192,7 @@
 
                                         if (mysqli_num_rows($query_run) > 0) {
                                             foreach ($query_run as $offense_record) {
-                                                $fetchOffenseName = "SELECT `name` FROM `offense_type` WHERE `id` = '{$offense_record['Offense_Type_Id']}'";
+                                                $fetchOffenseName = "SELECT `type_Name` FROM `offense_type` WHERE `id` = '{$offense_record['Offense_Type_Id']}'";
                                                 $resFetchOffenseName = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffenseName));
 
                                                 $fetchPolice = "SELECT * FROM `police` WHERE `id` = '{$offense_record['Police_Id']}'";
@@ -223,7 +200,7 @@
                                         ?>
                                                 <tr>
                                                     <td><?= $offense_record['Offender_Name']  ?></td>
-                                                    <td><?= $resFetchOffenseName['name'] ?></td>
+                                                    <td><?= $resFetchOffenseName['type_Name'] ?></td>
                                                     <td><?= $resFetchPolice['Location_Name'] ?></td>
                                                     <td><?= $resFetchPolice['Name'] ?></td>
                                                     <td><?= $offense_record['Date'] ?></td>
@@ -233,8 +210,8 @@
                                                         // $offense_record['Id']
                                                         ?>
                                                         <!-- " class="viewOffenseBtn btn btn-info btn-sm">View</button> -->
-                                                        <button type="button" value="<?= $offense_record['Id'] ?>" class="editOffenseBtn btn btn-success btn-sm">Edit</button>
-                                                        <button type="button" value="<?= $offense_record['Id'] ?>" class="deleteOffenseBtn btn btn-danger btn-sm">Delete</button>
+                                                        <button type="button" value="<?= $offense_record['offense_Id'] ?>" class="editOffenseBtn btn btn-success btn-sm">Edit</button>
+                                                        <button type="button" value="<?= $offense_record['offense_Id'] ?>" class="deleteOffenseBtn btn btn-danger btn-sm">Delete</button>
                                                     </td>
                                                 </tr>
                                         <?php
@@ -364,6 +341,7 @@
                     $(document).on('click', '.editOffenseBtn', function() {
 
                         var offender_id = $(this).val();
+                        console.log(offender_id);
 
                         $.ajax({
                             type: "GET",
