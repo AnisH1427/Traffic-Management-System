@@ -1,8 +1,11 @@
+<?php 
+include("preFunction/top.php");
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>W3.CSS Template</title>
+  <title>User Dashboard</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -232,14 +235,7 @@
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;text-align:center;" id="mySidebar"><br>
-    <div class="w3-container">
-      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-        <i class="fa fa-remove"></i>
-      </a>
-      <img src="images/sagar.jpg" style=" width: 35%;" class="w3-round"><br><br>
-      <h4><b>Sagar Budhathoki</b></h4>
-      <p class="w3-text-grey">Owner of 'BA 003 07 2043'</p>
-    </div>
+  <?php include('preFunction/userInfo.php');?>
   </nav>
 
   <!-- Overlay effect when opening sidebar on small screens -->

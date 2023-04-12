@@ -1,27 +1,11 @@
-<?php
-include("../Asstes/dbConn.php");
-session_start();
-if (!isset($_SESSION['userID'])) :
-  echo "Session Not Started";
-  return 0;
-endif;
-$userID = $_SESSION["userID"];
-
-
-$userSql = "SELECT * FROM `user` WHERE `id` = '{$userID}'";
-$userRes = mysqli_query($conn, $userSql);
-if ($userRes) :
-  $userInfo = mysqli_fetch_assoc($userRes);
-else :
-  echo "Query Execution Error";
-  return false;
-endif;
+<?php 
+include("preFunction/top.php");
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>W3.CSS Template</title>
+  <title>User Dashboard</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -63,28 +47,11 @@ endif;
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-  <?php
-  $vecSql = "SELECT * FROM `vehicle_info` WHERE `id` = '{$userInfo['owner_of']}'";
-  if (mysqli_query($conn, $vecSql)) :
-    $vecInfo = mysqli_fetch_assoc(mysqli_query($conn, $vecSql));
-  else :
-    echo "Query Execution Error";
-    return false;
-  endif;
 
-  if (is_null($vecInfo)) {
-    $vecInfo["Owner_Name"] = "User";
-    $vecInfo["vec_num"] = "None";
-  }
-  ?>
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-    <div class="w3-container">
-      <img src="<?= $userInfo['pic'] ?>" style=" width: 35%;" class="w3-round"><br><br>
-      <h4><b><?= $vecInfo["Owner_Name"]; ?></b></h4>
-      <p class="w3-text-grey">Owner of '<?= $vecInfo["vec_num"] ?>'</p>
-    </div>
+    <?php include('preFunction/userInfo.php');?>
     <div class="w3-bar-block">
       <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a>
       <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
@@ -112,7 +79,7 @@ endif;
           <!-- <span class="w3-margin-right">Filter:</span> -->
           <button class="w3-button w3-black" onclick="window.location.href = 'test.php'">ALL</button>
           <button class="w3-button w3-white" onclick="window.location.href = 'test2.php'"><i class="fa fa-inr w3-margin-between"></i> Payment</button>
-          <button class="w3-button w3-white" onclick="window.location.href = 'test3.php'"><i class="fas fa-file-alt w3-margin-between"></i> Rules</button>
+          <!-- <button class="w3-button w3-white" onclick="window.location.href = 'test3.php'"><i class="fas fa-file-alt w3-margin-between"></i> Rules</button> -->
           <button class="w3-button w3-white" onclick="window.location.href = 'test4.php'"><i class="fa fa-comments w3-margin-between"></i> Community</button>
         </div>
       </div>
@@ -131,7 +98,16 @@ endif;
         while ($challanInfo = mysqli_fetch_assoc($challanRes)) :
       ?>
           <div class="w3-third w3-container w3-margin-bottom" onclick="window.location.href = 'test2.php?id=<?= $challanInfo['Id'] ?>'" style="cursor:pointer">
-            <div class="w3-container w3-white">
+            
+          <div class="w3-container w3-white">
+            <p style="float:right">
+            <?php if($challanInfo["Status"] == "Paid"):?>
+              <i class="fa fa-circle" style="color:#009432"></i>
+              <?php elseif($challanInfo["Status"] == "Pending"):?>
+                <i class="fa fa-circle" style="color:#ee5253"></i>
+              <?php endif;?>
+          
+          </p>
               <p><b><u>Challan No : <?= $challanInfo["offense_Id"] ?></u></b></p>
               <span><b>Offender : </b><?= $challanInfo["Offender_Name"] ?></span><br>
               <span><b>Location : </b> <?= $challanInfo["Location_Name"] ?></span><br>
@@ -241,10 +217,10 @@ endif;
 
         <!-- </div> -->
       </footer>
-      <div class="w3-black w3-center w3-padding-24">Developed by <a href="https://heraldcollege.edu.np/" title="W3.CSS" target="_blank" class="w3-hover-opacity">Herald Students</a></div>
-
+      
       <!-- End page content -->
     </div>
+    <div class="w3-black w3-center w3-padding-24">Developed by <a href="https://heraldcollege.edu.np/" target="_blank" class="w3-hover-opacity">Herald Students</a></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script>
     <script>
       initMap();
