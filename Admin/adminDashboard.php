@@ -1,3 +1,12 @@
+<?php
+include('../Asstes/dbConn.php');
+    $fetchPolice = "SELECT COUNT(*) AS `totalPoliceCount` FROM `police`";
+    $fetchPoliceRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice))["totalPoliceCount"];
+    $fetchOffense = "SELECT COUNT(*) AS `fetchOffenseCount` FROM `offense_record`";
+    $fetchOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffense))["fetchOffenseCount"];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,16 +28,16 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
+                        <div class="numbers"><?= $fetchPoliceRes;?></div>
                         <div class="cardName">Total Police</div>
                     </div>
                     <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <!-- <ion-icon name="eye-outline"></ion-icon> -->
                     </div>
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
+                        <div class="numbers"><?= $fetchOffenseRes;?></div>
                         <div class="cardName">Total Offender</div>
                     </div>
                     <div class="iconBx">

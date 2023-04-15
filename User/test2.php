@@ -1,8 +1,11 @@
+<?php
+include("preFunction/top.php");
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>W3.CSS Template</title>
+  <title>User Dashboard</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -232,14 +235,7 @@
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;text-align:center;" id="mySidebar"><br>
-    <div class="w3-container">
-      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-        <i class="fa fa-remove"></i>
-      </a>
-      <img src="images/sagar.jpg" style=" width: 35%;" class="w3-round"><br><br>
-      <h4><b>Sagar Budhathoki</b></h4>
-      <p class="w3-text-grey">Owner of 'BA 003 07 2043'</p>
-    </div>
+  <?php include('preFunction/userInfo.php');?>
   </nav>
 
   <!-- Overlay effect when opening sidebar on small screens -->
@@ -249,20 +245,18 @@
   <div class="w3-main" style="margin-left:300px">
 
     <!-- Header -->
-<header id="home">
-    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
-    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-    <div class="w3-container">
+    <header id="home">
+      <div class="w3-container">
         <h1><b>Traffic Management System</b></h1>
         <div class="w3-section w3-bottombar w3-padding-16">
-            <!-- <span class="w3-margin-right">Filter:</span> -->
-            <button class="w3-button w3-white" onclick="window.location.href = 'test.php'">ALL</button>
-            <button class="w3-button w3-black" onclick="window.location.href = 'test2.php'"><i class="fa fa-inr w3-margin-between"></i> Payment</button>
-            <button class="w3-button w3-white" onclick="window.location.href = 'test3.php'"><i class="fas fa-file-alt w3-margin-between"></i> Rules</button>
-            <button class="w3-button w3-white" onclick="window.location.href = 'test4.php'"><i class="fa fa-comments w3-margin-between"></i> Community</button>
+          <!-- <span class="w3-margin-right">Filter:</span> -->
+          <button class="w3-button w3-white" onclick="window.location.href = 'test.php'">ALL</button>
+          <button class="w3-button w3-black" onclick="window.location.href = 'test2.php'"><i class="fa fa-inr w3-margin-between"></i> Payment</button>
+          <!-- <button class="w3-button w3-white" onclick="window.location.href = 'test3.php'"><i class="fas fa-file-alt w3-margin-between"></i> Rules</button> -->
+          <button class="w3-button w3-white" onclick="window.location.href = 'test4.php'"><i class="fa fa-comments w3-margin-between"></i> Community</button>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
     <!-- <hr> -->
     <!-- <h2 class="w3-center">Forms and Lists</h2> -->
@@ -401,38 +395,6 @@
       });
       let data = new FormData(form); //FormData is an object to easily send form data
       xhr.send(data); //sending form data
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script>
-  <script>
-    initMap();
-
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: 27.7172,
-          lng: 85.3240
-        },
-        zoom: 10
-      });
-
-      var trafficLayer = new google.maps.TrafficLayer();
-      trafficLayer.setMap(map);
-
-      var input = document.getElementById('search');
-      var autocomplete = new google.maps.places.Autocomplete(input);
-      autocomplete.bindTo('bounds', map);
-
-      var searchButton = document.getElementById('search-button');
-      searchButton.addEventListener('click', function() {
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.setCenter(place.geometry.location);
-          map.setZoom(15);
-        } else {
-          alert('Location not found');
-        }
-      });
     }
   </script>
   <script>
