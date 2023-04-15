@@ -7,7 +7,7 @@ $username = mysqli_real_escape_string($conn, $_POST['Username']);
 $password = mysqli_real_escape_string($conn, $_POST['Password']);
 $user_type = mysqli_real_escape_string($conn, $_POST['user_type']);
 
-$sql = "SELECT `Id` FROM `{$user_type}` WHERE `Email` = '{$username}' OR `Name` = '{$username}' AND `Password` = '{$password}'";
+$sql = "SELECT `Id` FROM `{$user_type}` WHERE (`Email` = '{$username}' OR `Name` = '{$username}') AND `Password` = '{$password}'";
 $res = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($res) > 0) {

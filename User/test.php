@@ -86,7 +86,7 @@ include("preFunction/top.php");
     </header>
 
     <?php
-    $challanSql = "SELECT * FROM `offense_type` JOIN `offense_record` JOIN `police` JOIN `user` ON `offense_type`.`Id` = `offense_record`.`Offense_Type_Id` AND `offense_record`.`Police_Id` = `police`.`Id` AND `user`.`owner_of` = '{$userInfo['owner_of']}' AND `offense_record`.`vehicle_id` = '{$userInfo['owner_of']}'";
+    $challanSql = "SELECT * FROM `offense_type` JOIN `offense_record` JOIN `police` JOIN `user` ON `offense_type`.`Id` = `offense_record`.`Offense_Type_Id` AND `offense_record`.`Police_Id` = `police`.`Id` AND `user`.`owner_of` = '{$userInfo['owner_of']}' AND `offense_record`.`vehicle_id` = '{$userInfo['owner_of']}'  AND `user`.`Id` = '{$userID}'";
 
     ?>
 
