@@ -168,7 +168,7 @@ if(isset($_POST["getOffenseType"])):
         $html = '<li value="0"><a class="dropdown-item">Offense Type</a></li>';
         while($got = mysqli_fetch_assoc($res)):
             $id = $got["Id"];
-            $name = $got["Name"];
+            $name = $got["type_Name"];
             $html .= '<li value="'.$id.'"><a class="dropdown-item">'.$name.'</a></li>' ;
         endwhile;
         echo $html;

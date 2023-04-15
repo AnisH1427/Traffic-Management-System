@@ -44,9 +44,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../offender/vechiles.html">
+                    <a href="../offender/Vehicles.html">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
-                        <span class="title">Vechiles</span>
+                        <span class="title">Vehicles</span>
                     </a>
                 </li>
                 <!-- <li>
