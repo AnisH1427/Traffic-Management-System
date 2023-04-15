@@ -140,10 +140,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Manage Police
+                                <h4>Vehicle Information
 
                                     <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#policeAddModal">
-                                        Add Police
+                                        Add Vehicles
                                     </button>
                                 </h4>
                             </div>
@@ -152,11 +152,12 @@
                                 <table id="myTable" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>MobileNumber</th>
-                                            <th>Email</th>
-                                            <th>Location_Name</th>
+                                            <th>License<br>Plate No</th>
+                                            <th>Owner <br>Name</th>
+                                            <th>Vehicle<br>Type</th>
+                                            <th>Mobile<br>Number</th>
+                                            <th>Manufacturer</th>
+                                            <!-- <th>Location</th> -->
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -164,22 +165,23 @@
                                         <?php
                                         require_once("../asstes/dbConn.php");
 
-                                        $query = "SELECT * FROM police";
+                                        $query = "SELECT * FROM vehicle_info";
                                         $query_run = mysqli_query($conn, $query);
 
                                         if (mysqli_num_rows($query_run) > 0) {
-                                            foreach ($query_run as $police) {
+                                            foreach ($query_run as $vehicle) {
                                         ?>
                                                 <tr>
-                                                    <td><?= $police['Id'] ?></td>
-                                                    <td><?= $police['Name'] ?></td>
-                                                    <td><?= $police['MobileNumber'] ?></td>
-                                                    <td><?= $police['Email'] ?></td>
-                                                    <td><?= $police['Location_Name'] ?></td>
+                                                    <td><?= $vehicle['vec_num'] ?></td>
+                                                    <td><?= $vehicle['Owner_Name'] ?></td>
+                                                    <td><?= $vehicle['Vehicle_Type'] ?></td>
+                                                    <td><?= $vehicle['License_Plate_No'] ?></td>
+                                                    <td><?= $vehicle['Manufacturer'] ?></td>
+
                                                     <td>
-                                                        <button type="button" value="<?= $police['Id'] ?>" class="viewPoliceBtn btn btn-info btn-sm">View</button>
-                                                        <button type="button" value="<?= $police['Id'] ?>" class="editPoliceBtn btn btn-success btn-sm">Edit</button>
-                                                        <button type="button" value="<?= $police['Id'] ?>" class="deletePoliceBtn btn btn-danger btn-sm">Delete</button>
+                                                        <button type="button" value="<?= $vehicle['vec_num'] ?>" class="viewPoliceBtn btn btn-info btn-sm">View</button>
+                                                        <button type="button" value="<?= $vehicle['vec_num'] ?>" class="editPoliceBtn btn btn-success btn-sm">Edit</button>
+                                                        <button type="button" value="<?= $vehicle['vec_num'] ?>" class="deletePoliceBtn btn btn-danger btn-sm">Delete</button>
                                                     </td>
                                                 </tr>
                                         <?php
