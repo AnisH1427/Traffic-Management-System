@@ -58,7 +58,7 @@
                     <div class="dropdown mb-3">
                         <label for="">Vehicle Type</label>
                         <select class="form-control" name="Vehicle_Type">
-                            <option value="">Select Vehicle Type</option>
+                            <option value="">Select Vehicle</option>
                             <option value="Two-Wheelers">Two-Wheelers</option>
                             <option value="Three-Wheelers">Three-Wheelers</option>
                             <option value="Four-Wheelers">Four-Wheelers</option>
