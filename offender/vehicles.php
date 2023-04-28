@@ -29,7 +29,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Add Vehicles</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="savePolice" method="post">
+            <form id="savePolice" method="post" action="">
                 <div class="modal-body">
 
                     <div id="errorMessage" class="alert alert-warning d-none"></div>
@@ -85,7 +85,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // establish database connection
 require_once('connect.php');
-
 // check if form is submitted
 if (isset($_POST['saveVehicle'])) {
     // initialize error message
@@ -289,7 +288,7 @@ if (isset($_POST['saveVehicle'])) {
                 let navigation = document.querySelector('.navigation');
                 let main = document.querySelector('.main');
 
-             6   toggle.onclick = function() {
+               toggle.onclick = function() {
                     navigation.classList.toggle('active');
                 }
                 // add hovered class in selected list item
