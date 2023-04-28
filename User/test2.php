@@ -294,6 +294,7 @@ include("preFunction/top.php");
                 </button>
                 <div class="dropdown-content">
                         </select>
+
                         <?php
       // Establish a database connection
       $host = "127.0.0.1:3307";
@@ -317,6 +318,7 @@ include("preFunction/top.php");
       }
       mysqli_close($connection);
     ?>
+            
                 </div>
               </div>
               <div action="" id="form">
