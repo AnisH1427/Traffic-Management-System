@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('127.0.0.1:3307', 'root', '', 'tms');
+$conn = mysqli_connect('localhost', 'root', '', 'tms');
 extract($_POST);
 
 $sql = "INSERT INTO `user`(`Name`, `MobileNumber`, `Address`, `Email`, `Gender`, `Password`) VALUES ('{$name}','{$mobileNumber}','{$address}','{$email}','{$gender}','{$password}')";
