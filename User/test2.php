@@ -293,9 +293,30 @@ include("preFunction/top.php");
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                  <a href="#">123</a>
-                  <a href="#">3332</a>
-                  <a href="#">444</a>
+                        </select>
+                        <?php
+      // Establish a database connection
+      $host = "127.0.0.1:3307";
+      $username = "root";
+      $password = "";
+      $database = "tms";
+      $connection = mysqli_connect($host, $username, $password, $database);
+      if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        exit();
+      }
+      
+      // Retrieve all the IDs from the "chalani" table
+      $sql = "SELECT Id FROM chalani";
+      $result = mysqli_query($connection, $sql);
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          // Generate a dropdown option for each ID
+          echo "<a href='#'>" . $row["Id"] . "</a>";
+        }
+      }
+      mysqli_close($connection);
+    ?>
                 </div>
               </div>
               <div action="" id="form">
