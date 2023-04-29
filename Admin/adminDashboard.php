@@ -2,10 +2,16 @@
 include('../Asstes/dbConn.php');
     $fetchPolice = "SELECT COUNT(*) AS `totalPoliceCount` FROM `police`";
     $fetchPoliceRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice))["totalPoliceCount"];
+    
     $fetchOffense = "SELECT COUNT(*) AS `fetchOffenseCount` FROM `offense_record`";
     $fetchOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffense))["fetchOffenseCount"];
+    
+    $fetchVehicle = "SELECT COUNT(*) AS `fetchVehicleCount` FROM `vehicle_info`";
+    $fetchVehicleRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchVehicle))["fetchVehicleCount"];
 
-
+    $fetchPaidOffense = "SELECT COUNT(*) AS `fetchPaidOffenseCount` FROM `offense_record` WHERE `Status` = 'Paid'";
+    $fetchPaidOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPaidOffense))["fetchPaidOffenseCount"];
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +44,7 @@ include('../Asstes/dbConn.php');
                 <div class="card">
                     <div>
                         <div class="numbers"><?= $fetchOffenseRes;?></div>
-                        <div class="cardName">Total Offender</div>
+                        <div class="cardName">Total Challan</div>
                     </div>
                     <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
@@ -46,7 +52,7 @@ include('../Asstes/dbConn.php');
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
+                        <div class="numbers"><?= $fetchVehicleRes;?></div>
                         <div class="cardName">Total Vechiles</div>
                     </div>
                     <div class="iconBx">
@@ -55,8 +61,8 @@ include('../Asstes/dbConn.php');
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers">10</div>
-                        <div class="cardName">Total challan</div>
+                        <div class="numbers"><?= $fetchPaidOffenseRes;?> / <?= $fetchOffenseRes;?></div>
+                        <div class="cardName">Paid Challan</div>
                     </div>
                     <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>

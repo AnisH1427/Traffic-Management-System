@@ -120,44 +120,6 @@
                 </div>
             </div>
 
-            <!-- View Offender Modal -->
-            <div class="modal fade" id="offenderViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">View Police</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="mb-3">
-                                <label for="">Offender Name</label>
-                                <p id="view_name" class="form-control"></p>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Offense </label>
-                                <p id="view_type" class="form-control"></p>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Location</label>
-                                <p id="view_location" class="form-control"></p>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Police Name</label>
-                                <p id="view_policename" class="form-control"></p>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Date</label>
-                                <p id="view_date" class="form-control"></p>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-md-12">
@@ -180,6 +142,7 @@
                                             <th>Location</th>
                                             <th>Police Name</th>
                                             <th>Date</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -204,6 +167,7 @@
                                                     <td><?= $resFetchPolice['Location_Name'] ?></td>
                                                     <td><?= $resFetchPolice['Name'] ?></td>
                                                     <td><?= $offense_record['Date'] ?></td>
+                                                    <td><?= $offense_record['Status'] ?></td>
                                                     <td>
                                                         <!-- <button type="button" value=" -->
                                                         <?php
