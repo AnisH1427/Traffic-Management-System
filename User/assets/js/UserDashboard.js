@@ -1,4 +1,4 @@
-<script>
+
 // MenuToggle
     let toggle = document.querySelector('.toggle');
     let navigation = document.querySelector('.navigation');
@@ -17,4 +17,3 @@
 }
 list.forEach((item) =>
     item.addEventListener('mouseover',activeLink));
-</script>

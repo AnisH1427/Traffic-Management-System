@@ -1,5 +1,17 @@
 <?php
 include("preFunction/top.php");
+if (isset($_GET['id'])) :
+  $challanSql = "SELECT * FROM `offense_type` JOIN `offense_record` JOIN `police` JOIN `user` ON `offense_record`.`offense_Id` =  '{$_GET["id"]}' AND `offense_type`.`Id` = `offense_record`.`Offense_Type_Id` AND `offense_record`.`Police_Id` = `police`.`Id` AND `user`.`owner_of` = '{$userInfo['owner_of']}' AND `offense_record`.`vehicle_id` = '{$userInfo['owner_of']}'  AND `user`.`Id` = '{$userID}'";
+  $res = mysqli_fetch_assoc(mysqli_query($conn, $challanSql));
+else :
+  $res["offense_Id"] = 'XXXX';
+  $res["Offender_Name"] = 'XXXX';
+  $res["Location_Name"] = 'XXXX';
+  $res["type_Name"] = 'XXXX';
+  $res["time"] = 'XXXX';
+  $res["Date"] = 'XXXX';
+  $res["Status"] = 'XXXX';
+endif;
 ?>
 <!DOCTYPE html>
 <html>
@@ -232,10 +244,9 @@ include("preFunction/top.php");
 </head>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;text-align:center;" id="mySidebar"><br>
-  <?php include('preFunction/userInfo.php');?>
+    <?php include('preFunction/userInfo.php'); ?>
   </nav>
 
   <!-- Overlay effect when opening sidebar on small screens -->
@@ -268,14 +279,14 @@ include("preFunction/top.php");
       <div class="w3-half">
         <div class="w3-card-4 w3-container">
           <h2>Details</h2>
-          <ul class="w3-ul w3-margin-bottom">
-            <li><b> Challen No : </b>XXXXX</li>
-            <li><b>Offender : </b>XXXXX</li>
-            <li><b>Location : </b>XXXXX</li>
-            <li><b>Offenses : </b>XXXXX</li>
-            <li><b>Offense Time : </b>XXXXX</li>
-            <li><b>Offense Date : </b>XXXXX</li>
-            <li><b>Payment Status : </b>XXXXX</li>
+          <ul class="w3-ul w3-margin-bottom challenInfo">
+            <li><b> Challen No : </b><?= $res["offense_Id"] ?></li>
+            <li><b>Offender : </b><?= $res["Offender_Name"] ?></li>
+            <li><b>Location : </b><?= $res["Location_Name"] ?></li>
+            <li><b>Offenses : </b><?= $res["type_Name"] ?></li>
+            <li><b>Offense Time : </b><?= $res["time"] ?></li>
+            <li><b>Offense Date : </b><?= $res["Date"] ?></li>
+            <li><b>Payment Status : </b><?= $res["Status"] ?></li>
             <li></li>
           </ul>
           <br>
@@ -283,7 +294,7 @@ include("preFunction/top.php");
       </div>
 
       <div class="w3-half">
-        <form class="w3-container w3-card-4">
+        <form class="w3-container w3-card-4 uploadForm">
           <h3 style="text-align: center;">Upload Payment Document</h3>
           <div class="w3-section">
 
@@ -292,16 +303,22 @@ include("preFunction/top.php");
                 <button class="dropbtn">Challen No
                   <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content">
-                  <a href="#">123</a>
-                  <a href="#">3332</a>
-                  <a href="#">444</a>
+                <div class="dropdown-content challenDrop">
                 </div>
               </div>
+              <input class="file-input" type="file" id="fileUpload" name="file" hidden>
               <div action="" id="form">
-                <input class="file-input" type="file" name="file" hidden>
-                <i class="fas fa-cloud-upload-alt"></i>
-                <p>Browse File to Upload</p>
+                <?php if ($res["Status"] == "Pending") : ?>
+                  <i class="fas fa-cloud-upload-alt upload"></i>
+                  <p class="upload">Browse File to Upload</p>
+                <?php elseif ($res["Status"] == "Paid") : ?>
+                  <p style="color:green;"><b>Already Paid</b></p><br>
+                  <i class="fas fa-check-circle"></i>
+                <?php else : ?>
+                  <p><b>Please Select Challen No</b></p><br>
+                  <i class="fas fa-smile"></i>
+                  <!-- <i class="fas fa-window-close"></i> -->
+                <?php endif; ?>
               </div>
               <section class="progress-area"></section>
               <section class="uploaded-area"></section>
@@ -310,7 +327,9 @@ include("preFunction/top.php");
           <div class="w3-section">
             <!-- <textarea id="w3review" name="w3review" rows="5" cols="45" placeholder="Any Comments for Admin ?"></textarea> -->
           </div>
-          <button type="submit" class="w3-button w3-black w3-margin-bottom" style="float: right;"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+          <?php if ($res["Status"] == "Pending") : ?>
+            <button type="submit" class="w3-button w3-black w3-margin-bottom sendFile" style="float: right;"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+          <?php endif; ?>
         </form>
       </div>
     </div>
@@ -323,31 +342,94 @@ include("preFunction/top.php");
   <!-- End page content -->
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    const form = document.querySelector("#form"),
-      fileInput = document.querySelector(".file-input"),
-      progressArea = document.querySelector(".progress-area"),
-      uploadedArea = document.querySelector(".uploaded-area");
+    $(document).ready(function() {
+      $.post("preFunction/challenNo.php", {
+        'getChallenNo': 'true',
+        'id': <?= $userInfo['owner_of'] ?>,
+      }, function(response) {
+        response = $.parseJSON(response);
+        if (response[0] == "Success") {
+          console.log(response);
+          $('.challenDrop').empty().append(response[1]);
+          $('.challenDrop').siblings('button').html('Challan No: ' + <?= $res["offense_Id"] ?> + ' <i class="fa fa-caret-down"></i>');
 
-    // form click event
-    form.addEventListener("click", () => {
-      fileInput.click();
-    });
-
-    fileInput.onchange = ({
-      target
-    }) => {
-      let file = target.files[0]; //getting file [0] this means if user has selected multiple files then get first one only
-      if (file) {
-        let fileName = file.name; //getting file name
-        if (fileName.length >= 12) { //if file name length is greater than 12 then split it and add ...
-          let splitName = fileName.split('.');
-          fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
+        } else if (response[0] == "Failed") {
+          $('.challenDrop').empty().append('<a href="">Server Failed</a>');
         }
-        uploadFile(fileName); //calling uploadFile with passing file name as an argument
-      }
-    }
+      });
 
+      let fileName = "";
+      document.querySelector(".file-input").onchange = ({
+        target
+      }) => {
+        let file = target.files[0]; //getting file [0] this means if user has selected multiple files then get first one only
+        if (file) {
+          fileName = file.name; //getting file name
+          let splitName = "";
+          const legal = ['png', 'jpg', 'jpeg', 'pdf'];
+          splitName = fileName.split('.');
+          if (fileName.length >= 12) { //if file name length is greater than 12 then split it and add ...
+            fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
+          }
+          if (!(legal.includes(splitName[1]))) {
+            fileName = "Invalid Format";
+            $('.file-input').val("");
+            var html = `<p><b class="upload">` + fileName + `</b></p><br><i class="fas fa-window-close pendingUpload" style="color:red"></i>`;
+          } else {
+
+            var html = `<p><b class="upload">` + fileName + `</b></p><br><i class="fas fa-times-circle pendingUpload" style="color:red"></i>`;
+          }
+          $('#form').empty().append(html);
+          // uploadFile(fileName); //calling uploadFile with passing file name as an argument
+        }
+      }
+
+      $('#form').on('click', '.pendingUpload', function() {
+        $('.file-input').val("");
+        var html = `<i class="fas fa-cloud-upload-alt upload"></i><p class="upload">Browse File to Upload</p>`;
+        $('#form').empty().append(html);
+      }).on('click', '.upload', function() {
+        $('.file-input').click();
+      });
+
+      $('.uploadForm').submit(function(e) {
+        e.preventDefault();
+        var fd = new FormData();
+        var files = $('#fileUpload')[0].files;
+        // Check file selected or not
+        if (files.length > 0) {
+
+          fd.append('file', files[0]);
+          fd.append('sendFile', 'true');
+          fd.append('challenId', <?= $res["offense_Id"] ?>);
+
+          $.ajax({
+            url: 'preFunction/challenNo.php',
+            type: 'post',
+            data: fd,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function(response) {
+              console.log(response.status);
+              if (response.status == 1) {
+                location.reload();
+
+              } else {
+                alert('File not uploaded');
+              }
+            }
+          });
+        } else {
+          alert("Please select a file.");
+        }
+      });
+    });
+  </script>
+
+  <script>
     // file upload function
     function uploadFile(name) {
       let xhr = new XMLHttpRequest(); //creating new xhr object (AJAX)
@@ -393,8 +475,8 @@ include("preFunction/top.php");
           uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML); //remove this line if you don't want to show upload history
         }
       });
-      let data = new FormData(form); //FormData is an object to easily send form data
-      xhr.send(data); //sending form data
+      // let data = new FormData(form); //FormData is an object to easily send form data
+      // xhr.send(data); //sending form data
     }
   </script>
   <script>

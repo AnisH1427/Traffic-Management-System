@@ -97,7 +97,7 @@ include("preFunction/top.php");
       if (mysqli_num_rows($challanRes) != 0) :
         while ($challanInfo = mysqli_fetch_assoc($challanRes)) :
       ?>
-          <div class="w3-third w3-container w3-margin-bottom" onclick="window.location.href = 'test2.php?id=<?= $challanInfo['Id'] ?>'" style="cursor:pointer">
+          <div class="w3-third w3-container w3-margin-bottom" onclick="window.location.href = 'test2.php?id=<?= $challanInfo['offense_Id'] ?>'" style="cursor:pointer">
             
           <div class="w3-container w3-white">
             <p style="float:right">
