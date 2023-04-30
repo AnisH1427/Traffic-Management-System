@@ -303,37 +303,7 @@ endif;
                 <button class="dropbtn">Challen No
                   <i class="fa fa-caret-down"></i>
                 </button>
-<<<<<<< HEAD
                 <div class="dropdown-content challenDrop">
-=======
-                <div class="dropdown-content">
-                        </select>
-
-                        <?php
-      // Establish a database connection
-      $host = "127.0.0.1:3307";
-      $username = "root";
-      $password = "";
-      $database = "tms";
-      $connection = mysqli_connect($host, $username, $password, $database);
-      if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        exit();
-      }
-      
-      // Retrieve all the IDs from the "chalani" table
-      $sql = "SELECT Id FROM chalani";
-      $result = mysqli_query($connection, $sql);
-      if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-          // Generate a dropdown option for each ID
-          echo "<a href='#'>" . $row["Id"] . "</a>";
-        }
-      }
-      mysqli_close($connection);
-    ?>
-            
->>>>>>> b0231c915c90588375e3e10b0d58abee4dcd4933
                 </div>
               </div>
               <input class="file-input" type="file" id="fileUpload" name="file" hidden>
