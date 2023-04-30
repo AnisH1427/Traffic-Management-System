@@ -84,7 +84,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // establish database connection
 require_once('connect.php');
-
 // check if form is submitted
 if (isset($_POST['saveVehicle'])) {
     // initialize error message
