@@ -51,14 +51,16 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>About Us</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>The company consist of 5 members. The role is divided into Project Manager,Business Analyst and developer
+                Saurya Manandar as a Project Manager, Anish Khatiwada as a Business Analyst, Sagar Budathoki and Amrit Regmi Magar are as a Developer
+                </p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                      <Nav.Link eventKey="first">Experienced</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                      <Nav.Link eventKey="second">User Stories</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="third">Tab 3</Nav.Link>
@@ -79,8 +81,18 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <Tab.Pane eventKey="second">
+                      <p>“During First year of my college, I used to be late sometimes in a class. 
+                        I used to get out in time from home,but due to traffic load it was hard to
+                         arrive on time and also cannot find perfect path. Now because of Hamro Traffic,
+                          the problem has been solved...”<br></br> - Anish Khatiwada</p>
+                      <p>
+                      “When I was going out during staurday for playing cricket, I didnot noticed the traffic 
+                      and I was not able to reach at time. It was very frustuating and disappointing. Now I am 
+                      using Hamro Traffic system, I can see the traffic load in different location and make decision.
+                       I am very very happy now...” - Hemant Bam
+                      </p>
+                      
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
