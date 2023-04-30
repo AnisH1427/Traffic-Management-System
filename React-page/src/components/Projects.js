@@ -63,7 +63,7 @@ export const Projects = () => {
                       <Nav.Link eventKey="second">User Stories</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="third">Tab 3</Nav.Link>
+                      <Nav.Link eventKey="third">Contact Us</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
@@ -95,7 +95,13 @@ export const Projects = () => {
                       
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                         <p>Saurya Manandhar  - s.manandar@hamrotraffic.com<br></br>
+                         Anish Khatiwada - anishkhatioda@gmail.com<br></br>
+                         Amrit Regmi Magar - amrit.regmi@hamrotraffic.com<br></br>
+                         Sagar Budhathoki  - sagar.budathoki@hamrotraffic.com<br></br>
+                         Naxal,Herald College Kathmandu<br></br>
+                         +977 98060*****
+                         </p>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
