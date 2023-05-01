@@ -49,6 +49,7 @@
                                     <ul class="dropdown-menu putFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle dropDownPoliceTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Police Name
@@ -99,6 +100,7 @@
                                     <ul class="dropdown-menu putFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="dropdown">
                                     <a id="PoliceName" class="btn btn-secondary dropdown-toggle dropDownPoliceTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Police Name

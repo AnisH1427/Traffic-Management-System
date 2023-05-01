@@ -258,7 +258,7 @@ include("preFunction/top.php");
 
       function logout(){
           
-        window.location.href =  "http://localhost:3001/#connect" ;
+        window.location.href =  "http://localhost:3000/#connect" ;
       }
       function w3_open() {
         document.getElementById("mySidebar").style.display = "block";
