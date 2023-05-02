@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+.home{
+    background: linear-gradient(to bottom, rgb(179, 179, 196), #3dcc16);
+    position: relative;
+    color: #3b690d;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 20px;
+}
+
+nav{
+    display: flex;
+    padding: 10px ;
+    align-items: center;
+    background: #287bff;
+    height: 130px;
+    width: 100%;
+}
+
+nav h1{
+    color: #fff;
+    margin-left: 180px;
+    margin-top: -70px;
+    font-size: xx-large;
+}
+
+nav .menu-img{
+    margin-right: 20px;
+    width: 25px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+nav .logo{
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+nav ul{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li{
+    display: inline;
+    margin: 20px;
+    list-style: none;
+    padding: 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    background: #287bff;
+    border-radius: 50%;
+}
+
+.active{
+    background: #003cb3;
+    padding: 10px 10px;
+    border-radius: 50%;
+}
+
+a:hover{
+    position: relative;
+    background: rgb(179, 179, 196);
+    padding: 10px 10px;
+    border-radius: 50%;
+}
+
+.text-container{
+    max-width: 600px;
+    margin-top: 0%;
+    margin-left: 10%;
+}
+
+.text-container h1{
+    font-size: 50px;
+    font-weight: 200;
+}
+
+.text-container a{
+    text-decoration: none;
+    display: inline-block;
+    color:#fff;
+    background: #00986f;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 14px 40px;
+    margin-top: 20px;
+}
+
+.text-container a:hover{
+    background: rgb(179, 179, 196);
+    padding: 14px 40px;
+    border-radius: 50%;
+}
+
+canvas {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#pie-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    margin-top: -20%;
+    padding: 50px;
+}
+
+.footer{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    background:#5a5c61;
+    justify-content: center;
+    text-align: center;
+    margin-top: 83px;
+}
+
+.footer h5{
+    padding: 20px;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
