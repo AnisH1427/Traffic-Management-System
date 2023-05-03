@@ -123,7 +123,7 @@ include("preFunction/top.php");
       else :
         ?>
         <div class="w3-row-padding w3-padding-large">
-          <h4><b>No Challans Yet</b></h4>
+          <h4><b>No Challan Yet</b></h4>
         </div>
       <?php
       endif;
@@ -173,11 +173,11 @@ include("preFunction/top.php");
         <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
           <div class="w3-third w3-dark-grey">
             <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-            <p>sagar@email.com</p>
+            <p>hamrotraffic@gmail.com</p>
           </div>
           <div class="w3-third w3-teal">
             <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-            <p>Thimi, Bhaktapur</p>
+            <p>Naxal, Herald College Kathmandu</p>
           </div>
           <div class="w3-third w3-dark-grey">
             <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
@@ -207,7 +207,13 @@ include("preFunction/top.php");
         <!-- <div class="row"> -->
         <div class="column">
           <h3>FOOTER</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente laboriosam quae esse accusantium rem sunt, saepe porro sed architecto minima cumque iusto.</p>
+          <p>
+          We save time for both of the User and administration.
+          Offender can be penalized and notice online and If same person is user,
+          than they can submit the fine paid proof from Home
+          Usually what happens is, Chalan is applied on the spot, 
+          but this problem has been minimized by us.
+          </p>
         </div>
 
         <div class="column">
@@ -258,7 +264,7 @@ include("preFunction/top.php");
 
       function logout(){
           
-        window.location.href =  "../homepage.html" ;
+        window.location.href =  "http://localhost:3000" ;
       }
       function w3_open() {
         document.getElementById("mySidebar").style.display = "block";

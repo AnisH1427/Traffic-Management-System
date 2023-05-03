@@ -47,10 +47,10 @@
                 </li> -->
 
         <li>
-            <a href="../Homepage.html">
-                <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
-                <span class="title">Logout</span>
-            </a>
+        <a href="http://localhost:3000" onclick="return confirm('Are you sure you want to log out?')">
+        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+        <span class="title">Logout</span>
+        </a>
         </li>
     </ul>
 </div>

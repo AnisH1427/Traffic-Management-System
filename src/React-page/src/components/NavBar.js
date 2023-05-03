@@ -45,8 +45,8 @@ export const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-              <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
+              <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Our Services</Nav.Link>
+              <Nav.Link href="#project" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>About Us</Nav.Link>
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
@@ -55,7 +55,7 @@ export const NavBar = () => {
                 <a href="#"><img src={navIcon3} alt="" /></a>
               </div>
               <Link to='#connect'>
-                <button className="vvd" onClick={() => window.location.href='http://localhost/traffic%20Management%20System/Login.html'}>
+                <button className="vvd" onClick={() => window.location.href='http://localhost/traffic%20Management%20System/src/Login.html'}>
                   <span>Join with Us</span>
                   </button>
               </Link>
