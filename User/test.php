@@ -147,7 +147,7 @@ include("preFunction/top.php");
       <div class="w3-grey">
         <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:<?= $paidPer . '%'; ?>"><?= $paidPer . '%'; ?></div>
       </div>
-      <p>Pending Paymets</p>
+      <p>Pending Payments</p>
       <div class="w3-grey">
         <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:<?= $pendingPer . '%'; ?>"><?= $pendingPer . '%'; ?></div>
       </div>

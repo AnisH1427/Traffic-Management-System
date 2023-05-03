@@ -30,7 +30,7 @@
                 <li>
                     <a href="new.php">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
-                        <span class="title">Vechiles</span>
+                        <span class="title">Vehicles</span>
                     </a>
                 </li>
                 <!-- <li>
@@ -39,12 +39,12 @@
                         <span class="title">E-challan</span>
                     </a>
                 </li> -->
-                <li>
+                <!-- <li>
                     <a href="../offender/challanlog.html">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Challan Log</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../Homepage.html">
                         <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>

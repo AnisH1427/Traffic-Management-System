@@ -328,7 +328,7 @@ endif;
             <!-- <textarea id="w3review" name="w3review" rows="5" cols="45" placeholder="Any Comments for Admin ?"></textarea> -->
           </div>
           <?php if ($res["Status"] == "Pending") : ?>
-            <button type="submit" class="w3-button w3-black w3-margin-bottom sendFile" style="float: right;"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+            <button type="submit" class="w3-button w3-black w3-margin-bottom sendFile" style="float: right;"><i class="fa fa-paper-plane w3-margin-right"></i>Send Payment</button>
           <?php endif; ?>
         </form>
       </div>

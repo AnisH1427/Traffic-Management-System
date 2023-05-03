@@ -37,11 +37,18 @@
 
                                 <div id="errorMessage" class="alert alert-warning d-none"></div>
 
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="">Offender Name</label>
                                     <input type="text" name="name" class="form-control" />
-                                </div>
+                                </div> -->
 
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle dropDownOwnerTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
+                                        Offender Name
+                                    </a>
+                                    <ul class="dropdown-menu putOwnerFromDatabase">
+                                    </ul>
+                                </div>
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle dropDownTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Offense Type
@@ -87,11 +94,18 @@
 
                                 <div id="errorMessage" class="alert alert-warning d-none"></div>
 
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="">Offender Name</label>
                                     <input type="text" id="OffenderName" name="name" class="form-control" />
-                                </div>
+                                </div> -->
 
+                                <div class="dropdown">
+                                    <a id="OffenderName" class="btn btn-secondary dropdown-toggle dropDownOwnerTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
+                                        Offender Name
+                                    </a>
+                                    <ul class="dropdown-menu putOwnerFromDatabase">
+                                    </ul>
+                                </div>
                                 <div class="dropdown">
                                     <a id="OffenseType" class="btn btn-secondary dropdown-toggle dropDownTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Offense Type
@@ -155,6 +169,9 @@
 
                                         if (mysqli_num_rows($query_run) > 0) {
                                             foreach ($query_run as $offense_record) {
+                                                $fetchOffenderName = "SELECT `Owner_Name` FROM `vehicle_info` WHERE `id` = '{$offense_record['vehicle_id']}'";
+                                                $resFetchOffenderName = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffenderName));
+
                                                 $fetchOffenseName = "SELECT `type_Name` FROM `offense_type` WHERE `id` = '{$offense_record['Offense_Type_Id']}'";
                                                 $resFetchOffenseName = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffenseName));
 
@@ -162,7 +179,7 @@
                                                 $resFetchPolice = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice));
                                         ?>
                                                 <tr>
-                                                    <td><?= $offense_record['Offender_Name']  ?></td>
+                                                    <td><?= $resFetchOffenderName['Owner_Name']  ?></td>
                                                     <td><?= $resFetchOffenseName['type_Name'] ?></td>
                                                     <td><?= $resFetchPolice['Location_Name'] ?></td>
                                                     <td><?= $resFetchPolice['Name'] ?></td>
@@ -232,12 +249,26 @@
                         $(".putFromDatabase").empty().append(response);
                     });
 
+                    // Retrive Owner name From DB
+                    $.post("offenderFunction/code1.php", {
+                        "getOffenderName": true,
+                    }, function(response) {
+                        $(".putOwnerFromDatabase").empty().append(response);
+                    });
+
                     // Retrive Police Name From DB
                     $.post("offenderFunction/code1.php", {
                         "getPoliceName": true,
                     }, function(response) {
                         $(".putPoliceFromDatabase").empty().append(response);
                     });
+                    
+                    //owner name dropdown
+                    $(".putOwnerFromDatabase").on("click", "li", function(e) {
+                        $(".dropDownOwnerTitle").html($(this).children("a").html());
+                        $(".dropDownOwnerTitle").attr("value", $(this).val());
+                    });
+
 
                     $(".putFromDatabase").on("click", "li", function(e) {
                         $(".dropDownTitle").html($(this).children("a").html());
@@ -256,6 +287,7 @@
                         e.preventDefault();
 
                         var formData = new FormData(this);
+                        formData.append("vehicle_info", $(".dropDownOwnerTitle").attr("value"));
                         formData.append("offense_type", $(".dropDownTitle").attr("value"));
                         formData.append("police_id", $(".dropDownPoliceTitle").attr("value"));
                         formData.append("save_offender", true);
@@ -294,6 +326,7 @@
                                     .find("input[type=checkbox], input[type=radio]")
                                     .prop("checked", "")
                                     .end();
+                                $(".dropDownOwnerTitle").html("Offender Name");
                                 $(".dropDownTitle").html("Offense Type");
                                 $(".dropDownPoliceTitle").html("Police Name");
 
@@ -318,7 +351,8 @@
                                 } else if (res.status == 200) {
                                     console.log(res);
                                     $('#updateOffender').attr("value", res.data.Id);
-                                    $('#OffenderName').val(res.data.Offender_Name);
+                                    $('#OffenderName').html(res.data.OffenderName);
+                                    $('#OffenderName').attr("value", res.data.vehicle_id);
                                     $('#OffenseType').html(res.data.offenseType);
                                     $('#OffenseType').attr("value", res.data.Offense_Type_Id);
                                     $('#PoliceName').html(res.data.PoliceName);
@@ -338,7 +372,7 @@
 
                         var formData = new FormData(this);
                         formData.append("update_offender", true);
-                        formData.append("offense_id", $('#updateOffender').attr("value"));
+                        formData.append("vehicle_info", $('#OffenderName').attr("value"));
                         formData.append("offense_type", $("#OffenseType").attr("value"));
                         formData.append("police_id", $("#PoliceName").attr("value"));
 
@@ -403,7 +437,7 @@
                                     alert(res.message);
                                 } else if (res.status == 200) {
 
-                                    $('#view_name').text(res.data.Offender_Name);
+                                    $('#view_name').text(res.data.vehicle_id);
                                     $('#view_type').text(res.data.Offense_Type_Id);
                                     $('#view_location').text(res.data.Police_Id);
                                     $('#view_policename').text(res.data.Police_Id);
