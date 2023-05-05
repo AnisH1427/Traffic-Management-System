@@ -4,7 +4,6 @@ include "../../Asstes/dbConn.php";
 if(isset($_POST['save_offender']))
 {
     $vehicle_id = mysqli_real_escape_string($conn, $_POST['vehicle_info']);
-    $Offender_Name = mysqli_real_escape_string($conn, $_POST['Offender_Name']);
     $Offense_type_Id = mysqli_real_escape_string($conn, $_POST['offense_type']);
     $Police_Id = mysqli_real_escape_string($conn, $_POST['police_id']);
     $Date = mysqli_real_escape_string($conn, $_POST['date']);
@@ -20,7 +19,7 @@ if(isset($_POST['save_offender']))
         return;
     }
 
-    $query = "INSERT INTO `offense_record` (`Offender_Name`,`vehicle_id`,`Offense_type_Id`,`Police_Id`,`Date`, `time`) VALUES ('$Offender_Name','$vehicle_id','$Offense_type_Id','$Police_Id','$Date', '{$time}')";
+    $query = "INSERT INTO `offense_record` (`vehicle_id`,`Offense_type_Id`,`Police_Id`,`Date`, `time`) VALUES ('$vehicle_id','$Offense_type_Id','$Police_Id','$Date', '{$time}')";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
@@ -47,7 +46,6 @@ if(isset($_POST['save_offender']))
 if(isset($_POST['update_offender']))
 {
     $vehicle_id = mysqli_real_escape_string($conn, $_POST['vehicle_info']);
-    // $Offender_Name = mysqli_real_escape_string($conn, $_POST['Offender_Name']);
     $Offense_type_Id = mysqli_real_escape_string($conn, $_POST['offense_type']);
     $Police_Id = mysqli_real_escape_string($conn, $_POST['police_id']);
     $Date = mysqli_real_escape_string($conn, $_POST['date']);

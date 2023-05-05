@@ -1,8 +1,8 @@
 <?php
-$conn = mysqli_connect('127.0.0.1:3307', 'root', '', 'tms');
+$conn = mysqli_connect('localhost', 'root', '', 'tms');
 extract($_POST);
 
-$sql = "INSERT INTO `user`(`Name`, `MobileNumber`, `Address`, `Email`, `Gender`, `Password`) VALUES ('{$name}','{$mobileNumber}','{$address}','{$email}','{$gender}','{$password}')";
+$sql = "INSERT INTO `user`(`Name`, `MobileNumber`, `Address`, `Email`, `Gender`, `Password`) VALUES ('{$fname}','{$fmobileNumber}','{$faddress}','{$femail}','{$fgender}','{$fpassword}')";
 $res = mysqli_query($conn, $sql);
 $response = [];
 if($res):
@@ -14,3 +14,4 @@ else:
     $response[] = "Failed";
 endif;
 echo json_encode($response);
+    

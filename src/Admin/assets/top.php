@@ -11,16 +11,16 @@
                     </label>
                 </div> -->
 
-    <div class="profile" onclick="MenuToggle();">
+    <!-- <div class="profile" onclick="MenuToggle();">
         <img src="../images/profile.png" alt="">
-    </div>
-    <div class="menu">
+    </div> -->
+    <!-- <div class="menu">
         <ul>
             <li><img src=""><a href="#">My profile</a></li>
             <li><img src=""><a href="#">Edit profile</a></li>
             <li><img src=""><a href="#">logout</a></li>
         </ul>
-    </div>
+    </div> -->
 
     <script>
         function MenuToggle() {

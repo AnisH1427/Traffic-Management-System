@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="utf-8" />
   <title>TMS Registration Form</title>
@@ -11,41 +12,41 @@
   <div class="container">
     <h1 class="form-title">TMS | Registration</h1>
     <!-- Registration form for User -->
-    <form action="php/register.php" method="post" autocomplete="off">
+    <form action="php/register.php" name="myForm" onsubmit="return validateForm()" method="post" autocomplete="off">
       <div class="main-user-info">
         <div class="user-input-box">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter Full Name" />
+          <input type="text" id="name" name="fname" placeholder="Enter Full Name" required /><b><span class="formerror" style="color: red;"> </span></b>
         </div>
         <div class="user-input-box">
           <label for="email">Email</label>
-          <input type="text" id="email" name="email" placeholder="Enter Email" />
+          <input type="text" id="email" name="femail" placeholder="Enter Email" required/><b><span class="formerror"> </span></b>
         </div>
         <div class="user-input-box">
           <label for="mobileNumber">Mobile Number</label>
-          <input type="number" id="mobileNumber" name="mobileNumber" placeholder="Enter Mobile Number" />
+          <input type="number" id="mobileNumber" name="fmobileNumber" placeholder="Enter Mobile Number" required/><b><span class="formerror"> </span></b>
         </div>
         <div class="user-input-box">
           <label for="address">Address</label>
-          <input type="text" id="address" name="address" placeholder="Enter Address" />
+          <input type="text" id="address" name="faddress" placeholder="Enter Address" required/><b><span class="formerror"> </span></b>
         </div>
         <div class="user-input-box">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter Password" />
+          <input type="password" id="password" name="fpassword" placeholder="Enter Password" required/><b><span class="formerror"> </span></b>
         </div>
         <div class="user-input-box">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
+          <input type="password" id="confirmPassword" name="fconfirmPassword" placeholder="Confirm Password" required/><b><span class="formerror"> </span></b>
         </div>
       </div>
       <div class="gender-details-box">
         <span class="gender-title">Gender</span>
         <div class="gender-category">
-          <input type="radio" name="gender" id="male" value="male" />
+          <input type="radio" name="fgender" id="male" value="male" />
           <label for="male">Male</label>
-          <input type="radio" name="gender" id="female" value="female" />
+          <input type="radio" name="fgender" id="female" value="female" />
           <label for="female">Female</label>
-          <input type="radio" name="gender" id="other" value="other" />
+          <input type="radio" name="fgender" id="other" value="other" />
           <label for="other">Other</label>
         </div>
       </div>
@@ -58,6 +59,126 @@
     </form>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+  <script>
+  //   function clearErrors() {
+  
+  //     errors = document.getElementsByClassName('formerror');
+  //     for (let item of errors) {
+  //       item.innerHTML = "";
+  //     }
+  
+  
+  //   }
+  //   function seterror(id, error) {
+  //     //sets error inside tag of id 
+  //     element = document.getElementById(id);
+  //     element.getElementsByClassName('formerror')[0].innerHTML = error;
+  
+  //   }
+  
+  //   function validateForm() {
+  //     var returnval = true;
+  //     clearErrors();
+  
+  //     //perform validation and if validation fails, set the value of returnval to false
+  //     var fname = document.forms['myForm']["fname"].value;
+  //     if (fname.length < 5) {
+  //       seterror("name", "*Length of name is too short");
+  //       returnval = false;
+  //     }
+  
+  //     if (name.length == 0) {
+  //       seterror("name", "*Length of name cannot be zero!");
+  //       returnval = false;
+  //     }
+  
+  //     var email = document.forms['myForm']["femail"].value;
+  //     if (email.length > 15) {
+  //       seterror("email", "*Email length is too long");
+  //       returnval = false;
+  //     }
+  
+  //     var phone = document.forms['myForm']["fmobileNumber"].value;
+  //     if (phone.length != 10) {
+  //       seterror("mobileNumber", "*Phone number should be of 10 digits!");
+  //       returnval = false;
+  //     }
+  //     var name = document.forms['myForm']["faddress"].value;
+  //     if (address.length < 5) {
+  //       seterror("address", "*Length of address is too short");
+  //       returnval = false;
+  //     }
+  
+  //     var password = document.forms['myForm']["fpassword"].value;
+  //     if (password.length < 6) {
+  
+  //       // Quiz: create a logic to allow only those passwords which contain atleast one letter, one number and one special character and one uppercase letter
+  //       seterror("password", "*Password should be atleast 6 characters long!");
+  //       returnval = false;
+  //     }
+  
+  //     var cpassword = document.forms['myForm']["fconfirmPassword"].value;
+  //     if (cpassword != password) {
+  //       seterror("confirmPassword", "*Password and Confirm password should match!");
+  //       returnval = false;
+  //     }
+  
+  //     return returnval;
+  //   }
+  
+  function validateForm() {
+  var name = document.forms["registrationForm"]["fname"].value;
+  var email = document.forms["registrationForm"]["femail"].value;
+  var password = document.forms["registrationForm"]["fpassword"].value;
+  var confirmPassword = document.forms["registrationForm"]["fconfirmPassword"].value;
+
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  
+  if (email == "") {
+    alert("Email must be filled out");
+    return false;
+  }
+
+  // Email validation using regular expression
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Invalid email format");
+    return false;
+  }
+
+  if (password == "") {
+    alert("Password must be filled out");
+    return false;
+  }
+
+  // Password strength validation
+  // Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character
+  var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+  if (!passwordPattern.test(password)) {
+    alert("Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character, and be at least 8 characters long");
+    return false;
+  }
+
+  if (confirmPassword == "") {
+    alert("Confirm Password must be filled out");
+    return false;
+  }
+
+  if (password != confirmPassword) {
+    alert("Passwords do not match");
+    return false;
+  }
+
+  return true;
+}
+
+  
+  </script>
+  
 </body>
 
-</html>F
+</html>

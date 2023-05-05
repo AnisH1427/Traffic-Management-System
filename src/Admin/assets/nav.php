@@ -22,17 +22,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="offender.php">
-                        <span class="icon"><ion-icon name="storefront-outline"></ion-icon></span>
-                        <span class="title">Offender</span>
-                    </a>
-                </li>
-                <li>
                     <a href="new.php">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
                         <span class="title">Vehicles</span>
                     </a>
                 </li>
+                <li>
+                    <a href="offender.php">
+                        <span class="icon"><ion-icon name="storefront-outline"></ion-icon></span>
+                        <span class="title">E-challan</span>
+                    </a>
+                </li>
+             
                 <!-- <li>
                     <a href="#">
                         <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
