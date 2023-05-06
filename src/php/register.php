@@ -9,7 +9,7 @@ if($res):
     // Query Execution Success
     $response[] = "Success";
     header("Location:../Login.html");
-else:
+else:                       
     // Query Execution Error
     $response[] = "Failed";
 endif;

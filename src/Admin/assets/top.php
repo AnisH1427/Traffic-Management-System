@@ -1,8 +1,8 @@
 <!-- Top bar Start -->
 <div class="topbar">
-    <div class="toogle">
+    <!-- <div class="toogle">
         <ion-icon name="menu-outline"></ion-icon>
-    </div>
+    </div> -->
     <!-- Search  -->
     <!-- <div class="search">
                     <label>

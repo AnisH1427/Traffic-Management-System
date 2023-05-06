@@ -1,17 +1,17 @@
 <?php
 include('../Asstes/dbConn.php');
-    $fetchPolice = "SELECT COUNT(*) AS `totalPoliceCount` FROM `police`";
-    $fetchPoliceRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice))["totalPoliceCount"];
-    
-    $fetchOffense = "SELECT COUNT(*) AS `fetchOffenseCount` FROM `offense_record`";
-    $fetchOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffense))["fetchOffenseCount"];
-    
-    $fetchVehicle = "SELECT COUNT(*) AS `fetchVehicleCount` FROM `vehicle_info`";
-    $fetchVehicleRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchVehicle))["fetchVehicleCount"];
+$fetchPolice = "SELECT COUNT(*) AS `totalPoliceCount` FROM `police`";
+$fetchPoliceRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice))["totalPoliceCount"];
 
-    $fetchPaidOffense = "SELECT COUNT(*) AS `fetchPaidOffenseCount` FROM `offense_record` WHERE `Status` = 'Paid'";
-    $fetchPaidOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPaidOffense))["fetchPaidOffenseCount"];
-    
+$fetchOffense = "SELECT COUNT(*) AS `fetchOffenseCount` FROM `offense_record`";
+$fetchOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchOffense))["fetchOffenseCount"];
+
+$fetchVehicle = "SELECT COUNT(*) AS `fetchVehicleCount` FROM `vehicle_info`";
+$fetchVehicleRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchVehicle))["fetchVehicleCount"];
+
+$fetchPaidOffense = "SELECT COUNT(*) AS `fetchPaidOffenseCount` FROM `offense_record` WHERE `Status` = 'Paid'";
+$fetchPaidOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPaidOffense))["fetchPaidOffenseCount"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,50 +28,50 @@ include('../Asstes/dbConn.php');
         <!-- main -->
         <div class="main">
             <?php include("assets/top.php"); ?>
-            
+
 
             <!-- cards -->
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers"><?= $fetchPoliceRes;?></div>
+                        <div class="numbers"><?= $fetchPoliceRes; ?></div>
                         <div class="cardName">Total Police</div>
                     </div>
-                    <div class="iconBx">
-                        <!-- <ion-icon name="eye-outline"></ion-icon> -->
-                    </div>
+                    <!-- <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div> -->
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><?= $fetchOffenseRes;?></div>
+                        <div class="numbers"><?= $fetchOffenseRes; ?></div>
                         <div class="cardName">Total Challan</div>
                     </div>
-                    <div class="iconBx">
+                    <!-- <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><?= $fetchVehicleRes;?></div>
+                        <div class="numbers"><?= $fetchVehicleRes; ?></div>
                         <div class="cardName">Total Vechiles</div>
                     </div>
-                    <div class="iconBx">
+                    <!-- <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><?= $fetchPaidOffenseRes;?> / <?= $fetchOffenseRes;?></div>
+                        <div class="numbers"><?= $fetchPaidOffenseRes; ?> / <?= $fetchOffenseRes; ?></div>
                         <div class="cardName">Paid Challan</div>
                     </div>
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
+                    <!-- <div class="iconBx">
+                    </div> -->
                 </div>
             </div>
+
         </div>
     </div>
-    
+
     <?php include("assets/script.php"); ?>
     <script>
         // MenuToggle
