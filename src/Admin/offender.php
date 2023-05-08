@@ -99,6 +99,8 @@
                                     <input type="text" id="OffenderName" name="name" class="form-control" />
                                 </div> -->
 
+                                <input type="hidden" id="OffenceID" value="" />
+
                                 <div class="dropdown">
                                     <a id="OffenderName" class="btn btn-secondary dropdown-toggle dropDownOwnerTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Offender Name
@@ -262,7 +264,7 @@
                     }, function(response) {
                         $(".putPoliceFromDatabase").empty().append(response);
                     });
-                    
+
                     //owner name dropdown
                     $(".putOwnerFromDatabase").on("click", "li", function(e) {
                         $(".dropDownOwnerTitle").html($(this).children("a").html());
@@ -349,13 +351,13 @@
 
                                     alert(res.message);
                                 } else if (res.status == 200) {
-                                    console.log(res);
-                                    $('#updateOffender').attr("value", res.data.Id);
+                                    $('#updateOffender').attr("value", res.data.id);
+                                    $('#OffenceID').attr("value", res.data.offense_Id);
                                     $('#OffenderName').html(res.data.OffenderName);
                                     $('#OffenderName').attr("value", res.data.vehicle_id);
                                     $('#OffenseType').html(res.data.offenseType);
                                     $('#OffenseType').attr("value", res.data.Offense_Type_Id);
-                                    $('#PoliceName').html(res.data.PoliceName);
+                                    $('#PoliceName').html(res.data.policeName);
                                     $('#PoliceName').attr("value", res.data.Police_Id);
                                     $('#Date').val(res.data.Date);
 
@@ -375,6 +377,8 @@
                         formData.append("vehicle_info", $('#OffenderName').attr("value"));
                         formData.append("offense_type", $("#OffenseType").attr("value"));
                         formData.append("police_id", $("#PoliceName").attr("value"));
+                        formData.append("offense_id", $("#OffenceID").attr("value"));
+
 
                         $.ajax({
                             type: "POST",

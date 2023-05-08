@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("preFunction/top.php");
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ include("preFunction/top.php");
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-    <?php include('preFunction/userInfo.php');?>
+    <?php include('preFunction/userInfo.php'); ?>
     <div class="w3-bar-block">
       <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a>
       <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
@@ -64,7 +64,7 @@ include("preFunction/top.php");
   <!-- Overlay effect when opening sidebar on small screens -->
   <!-- <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div> -->
 
-  
+
 
   <!-- !PAGE CONTENT! -->
   <div class="w3-main" style="margin-left:300px">
@@ -98,16 +98,16 @@ include("preFunction/top.php");
         while ($challanInfo = mysqli_fetch_assoc($challanRes)) :
       ?>
           <div class="w3-third w3-container w3-margin-bottom" onclick="window.location.href = 'test2.php?id=<?= $challanInfo['offense_Id'] ?>'" style="cursor:pointer">
-            
-          <div class="w3-container w3-white">
-            <p style="float:right">
-            <?php if($challanInfo["Status"] == "Paid"):?>
-              <i class="fa fa-circle" style="color:#009432"></i>
-              <?php elseif($challanInfo["Status"] == "Pending"):?>
-                <i class="fa fa-circle" style="color:#ee5253"></i>
-              <?php endif;?>
-          
-          </p>
+
+            <div class="w3-container w3-white">
+              <p style="float:right">
+                <?php if ($challanInfo["Status"] == "Paid") : ?>
+                  <i class="fa fa-circle" style="color:#009432"></i>
+                <?php elseif ($challanInfo["Status"] == "Pending") : ?>
+                  <i class="fa fa-circle" style="color:#ee5253"></i>
+                <?php endif; ?>
+
+              </p>
               <p><b><u>Challan No : <?= $challanInfo["offense_Id"] ?></u></b></p>
               <span><b>Offender : </b><?= $challanInfo["Offender_Name"] ?></span><br>
               <span><b>Location : </b> <?= $challanInfo["Location_Name"] ?></span><br>
@@ -140,7 +140,7 @@ include("preFunction/top.php");
       $paidPer = floor(($paidRes / ($pendingRes + $paidRes)) * 100);
     }
     ?>
-    
+
     <div class="w3-row-padding w3-padding-large">
       <h4><b>Payments</b></h4>
       <p>Paid Payments</p>
@@ -154,13 +154,13 @@ include("preFunction/top.php");
     </div>
 
     <div class="w3-row-padding w3-padding-16" id="about">
-    <div class="w3-col m6">
-      <img src="images/trafficSings.jpg" alt="Me" style="width:100%">
+      <div class="w3-col m6">
+        <img src="images/trafficSings.jpg" alt="Me" style="width:100%">
+      </div>
+      <div class="w3-col m6">
+        <img src="images/roadSings.jpg" alt="Me" style="width:100%">
+      </div>
     </div>
-    <div class="w3-col m6">
-      <img src="images/roadSings.jpg" alt="Me" style="width:100%">
-    </div>
-  </div>
 
     <div class="w3-container w3-padding-large" style="margin-bottom:32px" id="about">
       <h4><b>About Us</b></h4>
@@ -208,11 +208,11 @@ include("preFunction/top.php");
         <div class="column">
           <h3>FOOTER</h3>
           <p>
-          We save time for both of the User and administration.
-          Offender can be penalized and notice online and If same person is user,
-          than they can submit the fine paid proof from Home
-          Usually what happens is, Chalan is applied on the spot, 
-          but this problem has been minimized by us.
+            We save time for both of the User and administration.
+            Offender can be penalized and notice online and If same person is user,
+            than they can submit the fine paid proof from Home
+            Usually what happens is, Chalan is applied on the spot,
+            but this problem has been minimized by us.
           </p>
         </div>
 
@@ -223,7 +223,7 @@ include("preFunction/top.php");
 
         <!-- </div> -->
       </footer>
-      
+
       <!-- End page content -->
     </div>
     <div class="w3-black w3-center w3-padding-24">Developed by <a href="https://heraldcollege.edu.np/" target="_blank" class="w3-hover-opacity">Herald Students</a></div>
@@ -262,10 +262,11 @@ include("preFunction/top.php");
     <script>
       // Script to open and close sidebar
 
-      function logout(){
-          
-        window.location.href =  "http://localhost:3000" ;
+      function logout() {
+
+        window.location.href = "http://localhost:3000";
       }
+
       function w3_open() {
         document.getElementById("mySidebar").style.display = "block";
         document.getElementById("myOverlay").style.display = "block";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("preFunction/top.php");
 ?>
 <!DOCTYPE html>
@@ -235,7 +235,7 @@ include("preFunction/top.php");
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;text-align:center;" id="mySidebar"><br>
-  <?php include('preFunction/userInfo.php');?>
+    <?php include('preFunction/userInfo.php'); ?>
   </nav>
 
   <!-- Overlay effect when opening sidebar on small screens -->
@@ -254,9 +254,9 @@ include("preFunction/top.php");
           <!-- <span class="w3-margin-right">Filter:</span> -->
           <button class="w3-button w3-white" onclick="window.location.href = 'test.php'">ALL</button>
           <button class="w3-button w3-white" onclick="window.location.href = 'test2.php'"><i class="fa fa-inr w3-margin-between"></i> Payment</button>
-          <button class="w3-button w3-black" onclick="window.location.href = 'test3.php'"><i class="fas fa-file-alt w3-margin-between"></i> Rules</button>
+          <!-- <button class="w3-button w3-black" onclick="window.location.href = 'test3.php'"><i class="fas fa-file-alt w3-margin-between"></i> Rules</button> -->
           <button class="w3-button w3-white" onclick="window.location.href = 'test4.php'"><i class="fa fa-comments w3-margin-between"></i> Community</button>
-        </div>  
+        </div>
       </div>
     </header>
 
@@ -266,25 +266,25 @@ include("preFunction/top.php");
 
   <!-- <div class="w3-container"> -->
   <div class="w3-main" style="margin-left:300px">
-  <hr>
-    
+    <hr>
+
     <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
-        <h4>John Doe</h4><br>
-        <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-              <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
-            </div>
-            <div class="w3-half">
-              <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
-          </div>
+      <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <span class="w3-right w3-opacity">1 min</span>
+      <h4>John Doe</h4><br>
+      <hr class="w3-clear">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-half">
+          <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
         </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+        <div class="w3-half">
+          <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+        </div>
       </div>
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+    </div>
 
     <div class="w3-black w3-center w3-padding-24">Developed by <a href="https://heraldcollege.edu.np/" title="W3.CSS" target="_blank" class="w3-hover-opacity">Herald Students</a></div>
   </div>
