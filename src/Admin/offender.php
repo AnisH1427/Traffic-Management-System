@@ -49,6 +49,7 @@
                                     <ul class="dropdown-menu putOwnerFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle dropDownTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Offense Type
@@ -56,6 +57,7 @@
                                     <ul class="dropdown-menu putFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle dropDownPoliceTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Police Name
@@ -63,6 +65,7 @@
                                     <ul class="dropdown-menu putPoliceFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="mb-3">
                                     <label for="">Date</label>
                                     <input type="date" name="date" class="form-control" />
@@ -108,6 +111,7 @@
                                     <ul class="dropdown-menu putOwnerFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="dropdown">
                                     <a id="OffenseType" class="btn btn-secondary dropdown-toggle dropDownTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Offense Type
@@ -115,6 +119,7 @@
                                     <ul class="dropdown-menu putFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="dropdown">
                                     <a id="PoliceName" class="btn btn-secondary dropdown-toggle dropDownPoliceTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Police Name
@@ -122,6 +127,7 @@
                                     <ul class="dropdown-menu putPoliceFromDatabase">
                                     </ul>
                                 </div>
+                                <br>
                                 <div class="mb-3">
                                     <label for="">Date</label>
                                     <input type="date" name="date" class="form-control" id="Date" />
