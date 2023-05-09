@@ -55,7 +55,7 @@ export const NavBar = () => {
                 <a href="#"><img src={navIcon3} alt="" /></a>
               </div>
               <Link to='#connect'>
-                <button className="vvd" onClick={() => window.location.href='http://localhost/traffic%20Management%20System/src/Login.html'}>
+                <button className="vvd" onClick={() => window.location.href='http://localhost/traffic-Management-System/src/Login.html'}>
                   <span>Join with Us</span>
                   </button>
               </Link>

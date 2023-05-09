@@ -53,7 +53,7 @@ $fetchPaidOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPaidOffense)
                 <div class="card">
                     <div>
                         <div class="numbers"><?= $fetchVehicleRes; ?></div>
-                        <div class="cardName">Total Vechiles</div>
+                        <div class="cardName">Total Vehicles</div>
                     </div>
                     <!-- <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>

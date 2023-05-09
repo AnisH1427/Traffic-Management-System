@@ -1,6 +1,6 @@
 <?php
 session_start(); // Start the session
-$conn = mysqli_connect('localhost', 'root', '', 'tms');
+$conn = mysqli_connect('127.0.0.1:3307', 'root', '', 'tms');
 
 // Use mysqli_real_escape_string to sanitize user input
 $username = mysqli_real_escape_string($conn, $_POST['Username']);
