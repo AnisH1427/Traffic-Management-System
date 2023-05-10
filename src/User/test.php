@@ -109,7 +109,7 @@ include("preFunction/top.php");
 
               </p>
               <p><b><u>Challan No : <?= $challanInfo["offense_Id"] ?></u></b></p>
-              <span><b>Offender : </b><?= $challanInfo["Offender_Name"] ?></span><br>
+              <!-- <span><b>Offender : </b><?= $challanInfo["Offender_Name"] ?></span><br> -->
               <span><b>Location : </b> <?= $challanInfo["Location_Name"] ?></span><br>
               <span><b>Offenses : </b> <?= $challanInfo["type_Name"] ?></span> <br>
               <span><b>Offense Time : </b> <?= $challanInfo["time"] ?></span> <br>

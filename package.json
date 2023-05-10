@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "mysql": "^2.18.1"
+  },
+  "name": "traffic-management-system",
+  "description": "Welcome to our Traffic Management System Project! This web application project incorporates two primary users: the Admin and the user. The Admin holds the authority to add offenders along with their vehicle information for violations of traffic rules, assigning corresponding police officers, and performing various CRUD (Create, Read, Update, Delete) operations. On the other hand, the user can view pending payments charged to them and conveniently make payments. Additionally, our system offers a chatroom feature that allows users to engage in discussions with each other and seek support regarding any related matters.\r The Project consists of four member as given below.\r       1) Saurya Manandar - Project Manager\r       2) Anish Khatiwada - Business Analyst\r       3) Sagar Budathoki - Developer\r       4) Amrit Regmi Magar - Developer\r The project is a part of Fourth - Semestar , Collaborative Development module.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

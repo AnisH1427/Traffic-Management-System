@@ -281,7 +281,7 @@ endif;
           <h2>Details</h2>
           <ul class="w3-ul w3-margin-bottom challenInfo">
             <li><b> Challen No : </b><?= $res["offense_Id"] ?></li>
-            <li><b>Offender : </b><?= $res["Offender_Name"] ?></li>
+            <!-- <li><b>Offender : </b><?= $res["Offender_Name"] ?></li> -->
             <li><b>Location : </b><?= $res["Location_Name"] ?></li>
             <li><b>Offenses : </b><?= $res["type_Name"] ?></li>
             <li><b>Offense Time : </b><?= $res["time"] ?></li>
