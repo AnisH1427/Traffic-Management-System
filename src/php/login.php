@@ -22,7 +22,14 @@ if (mysqli_num_rows($res) > 0) {
     }
     exit();
 } else {
-    // Query Execution Error
-    echo "<script>alert('Login Failed. Please check your credentials.');</script>";
-    echo "<script>setTimeout(function(){ history.back(); }, 0);</script>";
+    // Query Execution Error or Login Failed
+    echo "<div id='login-error'>";
+    echo "<h2>Login Error</h2>";
+    echo "<ul>";
+    echo "<li>Invalid username or password.</li>";
+    echo "<li>Your account may not have access to the requested page.</li>";
+    echo "<li>Please make sure you are entering the correct credentials.</li>";
+    echo "</ul>";
+    echo "</div>";
+
 }
