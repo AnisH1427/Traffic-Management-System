@@ -38,12 +38,12 @@
                                     <input type="text" name="name" class="form-control" />
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">MobileNumber</label>
-                                    <input type="text" name="phone" class="form-control" />
+                                <label for="phone">Mobile Number</label>
+                                <input type="text" name="phone" id="phone" class="form-control" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Email</label>
-                                    <input type="text" name="email" class="form-control" />
+                                    <input type="email" name="email" class="form-control" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Location_Name</label>
@@ -80,11 +80,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="">MobileNumber</label>
-                                    <input type="text" name="phone" id="Mobilenumber" class="form-control" />
+                                    <input type="text" name="phone" id="Mobilenumber" class="form-control"  pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" placeholder="false" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Email</label>
-                                    <input type="text" name="email" id="Email" class="form-control" />
+                                    <input type="email" name="email" id="Email" class="form-control" required , title="please enter a valid email address" placeholder = "false"/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Location_Name</label>
