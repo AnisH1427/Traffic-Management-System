@@ -46,7 +46,7 @@ if(isset($_POST['update_police']))
 {
     $police_id = mysqli_real_escape_string($conn, $_POST['police_id']);
 
-    $Name = mysqli_real_escape_string($conn, $_POST['name']);
+    $Name = mysqli_real_escape_string($conn, $_POST['name']);   
     $MobileNumber = mysqli_real_escape_string($conn, $_POST['phone']);
     $Email = mysqli_real_escape_string($conn, $_POST['email']);
     $Location_Name = mysqli_real_escape_string($conn, $_POST['location']);

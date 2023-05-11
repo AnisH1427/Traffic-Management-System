@@ -1,5 +1,6 @@
 <?php
 include('../Asstes/dbConn.php');
+//fetch the count of records in the respective table and store it in the given variables
 $fetchPolice = "SELECT COUNT(*) AS `totalPoliceCount` FROM `police`";
 $fetchPoliceRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPolice))["totalPoliceCount"];
 
@@ -17,63 +18,63 @@ $fetchPaidOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPaidOffense)
 <html lang="en">
 
 <head>
-    <?php include("assets/head.php"); ?>
-    <link rel="stylesheet" href="assets/css/AdminDashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/mysql@2.18.1/dist/mysql.min.js"></script> -->
-    <title>Admin Dashboard</title>
+  <?php include("assets/head.php"); ?>
+  <link rel="stylesheet" href="assets/css/AdminDashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/mysql@2.18.1/dist/mysql.min.js"></script> -->
+  <title>Admin Dashboard</title>
 </head>
 
 <body>
-    <div class="container">
-        <?php include("assets/nav.php"); ?>
-        <!-- main -->
-        <div class="main">
-            <?php include("assets/top.php"); ?>
+  <div class="container">
+    <?php include("assets/nav.php"); ?>
+    <!-- main -->
+    <div class="main">
+      <?php include("assets/top.php"); ?>
 
 
-            <!-- cards -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers"><?= $fetchPoliceRes; ?></div>
-                        <div class="cardName">Total Police</div>
-                    </div>
-                    <!-- <div class="iconBx">
+      <!-- cards -->
+      <div class="cardBox">
+        <div class="card">
+          <div>
+            <div class="numbers"><?= $fetchPoliceRes; ?></div>
+            <div class="cardName">Total Police</div>
+          </div>
+          <!-- <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
                     </div> -->
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers"><?= $fetchOffenseRes; ?></div>
-                        <div class="cardName">Total Challan</div>
-                    </div>
-                    <!-- <div class="iconBx">
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers"><?= $fetchOffenseRes; ?></div>
+            <div class="cardName">Total Challan</div>
+          </div>
+          <!-- <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
                     </div> -->
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers"><?= $fetchVehicleRes; ?></div>
-                        <div class="cardName">Total Vehicles</div>
-                    </div>
-                    <!-- <div class="iconBx">
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers"><?= $fetchVehicleRes; ?></div>
+            <div class="cardName">Total Vehicles</div>
+          </div>
+          <!-- <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
                     </div> -->
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers"><?= $fetchPaidOffenseRes; ?> / <?= $fetchOffenseRes; ?></div>
-                        <div class="cardName">Paid Challan</div>
-                    </div>
-                    <!-- <div class="iconBx">
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers"><?= $fetchPaidOffenseRes; ?> / <?= $fetchOffenseRes; ?></div>
+            <div class="cardName">Paid Challan</div>
+          </div>
+          <!-- <div class="iconBx">
                     </div> -->
-                </div>
-                
-            </div>
-            <?php
+        </div>
+
+      </div>
+      <?php
       // establish a connection to the database
-      $conn = mysqli_connect('127.0.0.1:3307', 'root', '', 'tms');
+      $conn = mysqli_connect('localhost', 'root', '', 'tms');
       if (!$conn) {
         die('Connection failed: ' . mysqli_connect_error());
       }
@@ -85,22 +86,22 @@ $fetchPaidOffenseRes = mysqli_fetch_assoc(mysqli_query($conn, $fetchPaidOffense)
       }
       // generate the chart data
       // generate the chart data and set the bar colors
-$labels = array();
-$data = array();
-$colors = array();
-while ($row = mysqli_fetch_assoc($result)) {
-  array_push($labels, $row['Status']);
-  array_push($data, $row['Count']);
-  if ($row['Status'] == 'Open') {
-    array_push($colors, 'red');
-  } elseif ($row['Status'] == 'Pending') {
-    array_push($colors, 'orange');
-  } elseif ($row['Status'] == 'Closed') {
-    array_push($colors, 'green');
-  } else {
-    array_push($colors, 'blue');
-  }
-}
+      $labels = array();
+      $data = array();
+      $colors = array();
+      while ($row = mysqli_fetch_assoc($result)) {
+        array_push($labels, $row['Status']);
+        array_push($data, $row['Count']);
+        if ($row['Status'] == 'Open') {
+          array_push($colors, 'red');
+        } elseif ($row['Status'] == 'Pending') {
+          array_push($colors, 'orange');
+        } elseif ($row['Status'] == 'Closed') {
+          array_push($colors, 'green');
+        } else {
+          array_push($colors, 'blue');
+        }
+      }
 
       // log the fetched data to the console
       echo '<script>console.log("Labels: ' . json_encode($labels) . '");</script>';
@@ -152,46 +153,46 @@ while ($row = mysqli_fetch_assoc($result)) {
           )
         )
       );
-    ?>
-    <div style="width: 50%; float: left;">
-      <canvas id="barChart"></canvas>
+      ?>
+      <div style="width: 50%; float: left;">
+        <canvas id="barChart"></canvas>
+      </div>
+      <div style="width: 40%; float: left;">
+        <canvas id="lineChart"></canvas>
+      </div>
+      <script>
+        const bar_options = <?php echo json_encode($bar_options); ?>;
+        const line_options = <?php echo json_encode($line_options); ?>;
+        const bar_ctx = document.getElementById('barChart').getContext('2d');
+        const line_ctx = document.getElementById('lineChart').getContext('2d');
+        const bar_chart = new Chart(bar_ctx, bar_options);
+        const line_chart = new Chart(line_ctx, line_options);
+      </script>
     </div>
-    <div style="width: 40%; float: left;">
-      <canvas id="lineChart"></canvas>
-    </div>
-    <script>
-      const bar_options = <?php echo json_encode($bar_options); ?>;
-      const line_options = <?php echo json_encode($line_options); ?>;
-      const bar_ctx = document.getElementById('barChart').getContext('2d');
-      const line_ctx = document.getElementById('lineChart').getContext('2d');
-      const bar_chart = new Chart(bar_ctx, bar_options);
-      const line_chart = new Chart(line_ctx, line_options);
-    </script>
-        </div>
-    </div>
-   
-    <?php include("assets/script.php"); ?>
-    <script>
-        // MenuToggle
-        let toggle = document.querySelector('.toggle');
-        let navigation = document.querySelector('.navigation');
-        let main = document.querySelector('.main');
+  </div>
 
-        toggle.onclick = function() {
-            navigation.classList.toggle('active');
-        }
-        // add hovered class in selected list item
-        let list = document.querySelectorAll('.navigation li');
+  <?php include("assets/script.php"); ?>
+  <script>
+    // MenuToggle
+    let toggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    let main = document.querySelector('.main');
 
-        function activeLink() {
-            list.forEach((item) =>
-                item.classList.remove('hovered'));
-            this.classList.add('hovered');
+    toggle.onclick = function() {
+      navigation.classList.toggle('active');
+    }
+    // add hovered class in selected list item
+    let list = document.querySelectorAll('.navigation li');
 
-        }
-        list.forEach((item) =>
-            item.addEventListener('mouseover', activeLink));
-    </script>
+    function activeLink() {
+      list.forEach((item) =>
+        item.classList.remove('hovered'));
+      this.classList.add('hovered');
+
+    }
+    list.forEach((item) =>
+      item.addEventListener('mouseover', activeLink));
+  </script>
 </body>
 
 </html>

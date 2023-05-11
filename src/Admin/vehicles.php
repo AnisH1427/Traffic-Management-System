@@ -15,118 +15,119 @@
         <?php include("assets/nav.php"); ?>
         <!-- main -->
         <div class="main">
-            
+
             <?php include("assets/top.php"); ?>
             <!-- Bootstrap CSS -->
             <!-- Button trigger modal -->
 
             <!-- Add Vehicles -->
             <div class="modal fade" id="policeAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Vehicles</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Vehicles</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="post" action="">
+                            <div class="modal-body">
+
+                                <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+                                <div class="mb-3">
+                                    <label for="">License Plate No</label>
+                                    <input type="text" name="License_Plate_No" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Owner Name</label>
+                                    <select class="form-control" name="Owner_Name">
+                                        <option value="">Select Vehicle's Owner</option>
+                                        <?php
+                                        // Connect to the database
+                                        require_once 'connect.php';
+
+                                        // Retrieve the list of user names
+                                        $sql = "SELECT Name FROM user";
+                                        $result = $conn->query($sql);
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="' . $row['Name'] . '">' . $row['Name'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="dropdown mb-3">
+                                    <label for="">Vehicle Type</label>
+                                    <select class="form-control" name="Vehicle_Type">
+                                        <option value="">Select Vehicle</option>
+                                        <option value="Two-Wheelers">Two-Wheelers</option>
+                                        <option value="Three-Wheelers">Three-Wheelers</option>
+                                        <option value="Four-Wheelers">Four-Wheelers</option>
+                                        <option value="Six-Wheelers">Six-Wheelers</option>
+                                        <option value="Eight-Wheelers">Eight-Wheelers</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Manufacturer</label>
+                                    <input type="text" name="Manufacturer" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="saveVehicle">Save Vehicle</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form  method="post" action="">
-                <div class="modal-body">
 
-                    <div id="errorMessage" class="alert alert-warning d-none"></div>
+            <?php
+            error_reporting(E_ALL);
+            ini_set('display_errors', 1);
+            // establish database connection
+            require_once('connect.php');
 
-                    <div class="mb-3">
-                        <label for="">License Plate No</label>
-                        <input type="text" name="License_Plate_No" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Owner Name</label>
-                        <select class="form-control" name="Owner_Name">
-                        <option value="">Select Vehicle's Owner</option>
-                            <?php
-                            // Connect to the database
-                            require_once 'connect.php';
-                            
-                            // Retrieve the list of user names
-                            $sql = "SELECT Name FROM user";
-                            $result = $conn->query($sql);
-                            while ($row = $result->fetch_assoc()) {
-                                echo '<option value="' . $row['Name'] . '">' . $row['Name'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="dropdown mb-3">
-                        <label for="">Vehicle Type</label>
-                        <select class="form-control" name="Vehicle_Type">
-                            <option value="">Select Vehicle</option>
-                            <option value="Two-Wheelers">Two-Wheelers</option>
-                            <option value="Three-Wheelers">Three-Wheelers</option>
-                            <option value="Four-Wheelers">Four-Wheelers</option>
-                            <option value="Six-Wheelers">Six-Wheelers</option>
-                            <option value="Eight-Wheelers">Eight-Wheelers</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Manufacturer</label>
-                        <input type="text" name="Manufacturer" class="form-control" />
-                    </div>   
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="saveVehicle">Save Vehicle</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+            // check if form is submitted
+            if (isset($_POST['saveVehicle'])) {
+                // initialize error message
+                $errorMessage = 'Error, while adding vehicles';
 
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-// establish database connection
-require_once('connect.php');
-// check if form is submitted
-if (isset($_POST['saveVehicle'])) {
-    // initialize error message
-    $errorMessage = 'Error, while adding vehicles';
+                // check if all required fields are filled
+                if (empty($_POST['License_Plate_No']) || empty($_POST['Owner_Name']) || empty($_POST['Vehicle_Type']) || empty($_POST['Manufacturer'])) {
+                    $errorMessage = 'Please fill all required fields';
+                } else {
+                    // sanitize input values to prevent SQL injection
+                    $license_plate_no = mysqli_real_escape_string($conn, $_POST['License_Plate_No']);
+                    $owner_name = mysqli_real_escape_string($conn, $_POST['Owner_Name']);
+                    $vehicle_type = mysqli_real_escape_string($conn, $_POST['Vehicle_Type']);
+                    $manufacturer = mysqli_real_escape_string($conn, $_POST['Manufacturer']);
 
-    // check if all required fields are filled
-    if (empty($_POST['License_Plate_No']) || empty($_POST['Owner_Name']) || empty($_POST['Vehicle_Type']) || empty($_POST['Manufacturer'])) {
-        $errorMessage = 'Please fill all required fields';
-    } else {
-        // sanitize input values to prevent SQL injection
-        $license_plate_no = mysqli_real_escape_string($conn, $_POST['License_Plate_No']);
-        $owner_name = mysqli_real_escape_string($conn, $_POST['Owner_Name']);
-        $vehicle_type = mysqli_real_escape_string($conn, $_POST['Vehicle_Type']);
-        $manufacturer = mysqli_real_escape_string($conn, $_POST['Manufacturer']);
+                    // check if plate number already exists in database
+                    $query = "SELECT * FROM vehicle_info WHERE License_Plate_No='$license_plate_no'";
+                    $result = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($result) > 0) {
+                        $errorMessage = 'Plate number already exists';
+                    } else {
+                        // get owner id from selected owner name
+                        $query = "SELECT * FROM user WHERE Name='$owner_name'";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_assoc($result);
+                        $owner_id = $row['Id'];
 
-        // check if plate number already exists in database
-        $query = "SELECT * FROM vehicle_info WHERE License_Plate_No='$license_plate_no'";
-        $result = mysqli_query($conn, $query);
-        if (mysqli_num_rows($result) > 0) {
-            $errorMessage = 'Plate number already exists';
-        } else {
-            // get owner id from selected owner name
-            $query = "SELECT * FROM user WHERE Name='$owner_name'";
-            $result = mysqli_query($conn, $query);
-            $row = mysqli_fetch_assoc($result);
-            $owner_id = $row['Id'];
+                        // insert vehicle information into database
+                        $query = "INSERT INTO vehicle_info (License_Plate_No, Owner_Name, Vehicle_Type, Manufacturer) VALUES ('$license_plate_no', '$owner_name', '$vehicle_type', '$manufacturer')";
+                        if (mysqli_query($conn, $query)) {
+                            echo '<script>alert("Vehicle added successfully")</script>';
+                        } else {
+                            $errorMessage = 'Error: ' . mysqli_error($conn);
+                        }
+                    }
+                }
 
-            // insert vehicle information into database
-            $query = "INSERT INTO vehicle_info (License_Plate_No, Owner_Name, Vehicle_Type, Manufacturer) VALUES ('$license_plate_no', '$owner_name', '$vehicle_type', '$manufacturer')";
-            if (mysqli_query($conn, $query)) {
-                echo '<script>alert("Vehicle added successfully")</script>';
-            } else {
-                $errorMessage = 'Error: ' . mysqli_error($conn);
+                // if there is any error, show error message
+                if (!empty($errorMessage)) {
+                    echo '<script>alert("Error: ' . $errorMessage . '")</script>';
+                }
             }
-        }
-    }
-
-    // if there is any error, show error message
-    if (!empty($errorMessage)) {
-        echo '<script>alert("Error: ' . $errorMessage . '")</script>';
-    }
-}
-?>
+            ?>
             <!-- Edit Vehicle Modal -->
             <div class="modal fade" id="policeEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -145,8 +146,8 @@ if (isset($_POST['saveVehicle'])) {
                                     <label for="">License Plate</label>
                                     <input type="text" name="name" class="form-control" />
                                 </div>
-                                <div class = "dropdown">
-                                <a class="btn btn-secondary dropdown-toggle dropDownTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle dropDownTitle" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="0">
                                         Owner Name
                                     </a>
                                     <!-- <ul class="dropdown-menu putFromDatabase">
@@ -155,19 +156,19 @@ if (isset($_POST['saveVehicle'])) {
                                 <div class="mb-3">
                                     <label for="">Plate no</label>
                                     <input type="text" name="email" class="form-control" />
-                                </div> 
+                                </div>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle dropDownTitle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Vehicle Type
                                     </button>
                                     <ul class="dropdown-menu putPoliceFromDatabase">
                                     </ul>
-                                    </div>
-                                    <br>
-                                    <div class="mb-3">
+                                </div>
+                                <br>
+                                <div class="mb-3">
                                     <label for="">Manufacturer</label>
                                     <input type="text" name="email" class="form-control" />
-                                </div>   
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -280,7 +281,7 @@ if (isset($_POST['saveVehicle'])) {
     </html> -->
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-            
+
             <script>
                 // MenuToggle
                 let toggle = document.querySelector('.toggle');
