@@ -15,7 +15,7 @@
         <?php include("assets/nav.php"); ?>
         <!-- main -->
         <div class="main">
-            
+
             <?php include("assets/top.php"); ?>
             <!-- Bootstrap CSS -->
             <!-- Button trigger modal -->
@@ -38,12 +38,12 @@
                                     <input type="text" name="name" class="form-control" />
                                 </div>
                                 <div class="mb-3">
-                                <label for="phone">Mobile Number</label>
-                                <input type="text" name="phone" id="phone" class="form-control" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" />
+                                    <label for="">MobileNumber</label>
+                                    <input type="text" name="phone" class="form-control" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Email</label>
-                                    <input type="email" name="email" class="form-control" />
+                                    <input type="email" name="email" class="form-control" title="please enter a valid email address" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Location_Name</label>
@@ -80,11 +80,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="">MobileNumber</label>
-                                    <input type="text" name="phone" id="Mobilenumber" class="form-control"  pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" placeholder="false" />
+                                    <input type="text" name="phone" id="Mobilenumber" class="form-control" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Email</label>
-                                    <input type="email" name="email" id="Email" class="form-control" required , title="please enter a valid email address" placeholder = "false"/>
+                                    <input type="email" name="email" id="Email" class="form-control" title="please enter a valid email address" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Location_Name</label>
@@ -202,13 +202,13 @@
             <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
             <script>
                 // MenuToggle
-                let toggle = document.querySelector('.toggle');
+                // let toggle = document.querySelector('.toggle');
                 let navigation = document.querySelector('.navigation');
                 let main = document.querySelector('.main');
 
-                toggle.onclick = function() {
-                    navigation.classList.toggle('active');
-                }
+                // toggle.onclick = function() {
+                //     navigation.classList.toggle('active');
+                // }
                 // add hovered class in selected list item
                 let list = document.querySelectorAll('.navigation li');
 
